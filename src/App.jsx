@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import Swipe from "./Swipe.jsx";
+import Swipe from "./Swipe.tsx";
 
 function App() {
   const [count, setCount] = useState(0);
