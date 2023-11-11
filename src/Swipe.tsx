@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
 
-import styles from './styles.module.css'
+import "./swipesstyles.css"
 
 const cards = [
   'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png',
