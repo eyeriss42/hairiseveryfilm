@@ -73,7 +73,7 @@ const trans = (r: number, s: number) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
 function Deck() {
-  const [result, setResult] = useState('');
+  const [outcome, setOutcome] = useState({ result: '', counter: 0 });
   const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
   const [props, api] = useSprings(cards.length, i => ({
     ...to(i),
@@ -100,21 +100,20 @@ function onSwipe(direction: 'left' | 'right', isLongHair: boolean) {
 
 
 function evaluateResult() {
+  let message;
   if (counter > 0) {
-    console.log("keep growing your hair");
-    return 'keep growing your hair';
+    message = 'keep growing your hair';
   } else if (counter < 0) {
-    console.log("cut your hair");
-    return 'cut your hair';
+    message = 'cut your hair';
   } else {
-    console.log("balanced preference");
-    return 'balanced preference'; // or any default recommendation
+    message = 'balanced preference'; 
   }
+  return {result: message, counter};
 }
 
 function handleEndOfSwiping() {
   const evaluationResult = evaluateResult();
-  setResult(evaluationResult); // Update the state
+  setOutcome(evaluationResult); // Update the state
 }
 
   
@@ -180,7 +179,9 @@ function handleEndOfSwiping() {
         </animated.div>
 
       ))}
-        {result && <div className="result-display">{result}</div>}
+      
+        {outcome.result && <div className="result-display">{outcome.result}  <p>because your score is {outcome.counter}</p></div>}
+        
     </>
   );
 }
