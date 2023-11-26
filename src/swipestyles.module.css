@@ -19,16 +19,16 @@
   }
   
   .deck > div {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     background-size: auto 85%;
     background-repeat: no-repeat;
     background-position: center center;
-    width: 45vh;
-    max-width: 150px;
-    height: 85vh;
-    max-height: 285px;
+    width: 400vh;
+    max-width: 600px;
+    height: 200vh;
+    max-height: 400px;
     will-change: transform;
     border-radius: 10px;
-    box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
+    box-shadow: 0 6px 20px -5px rgba(50, 50, 73, 0.2), 0 5px 5px -5px rgba(50, 50, 73, 0.1);
   }
   

@@ -3,60 +3,59 @@ import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
 import styles from './swipestyles.module.css'
 
+import nomadland from "src/assets/nomadland.jpeg";
+import rouge from "src/assets/rouge.jpeg";
+import vivresavie from "src/assets/vivresavie.jpeg";
+import womenwhoran from "src/assets/womenwhoran.jpeg";
+
+// import cards from "/src/assets/cards.js";
+
 interface Card {
   image: string;
   isLongHair: boolean;
 }
 
 const cards: Card[] = [
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },  
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },  
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },  
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },  
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },  
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },  
-  { image: 'https://static-00.iconduck.com/assets.00/scissors-emoji-1806x2048-8uc9jnej.png', isLongHair: false },
-  { image: 'https://images.emojiterra.com/google/android-12l/512px/1f331.png', isLongHair: true },
+  // { image: nomadland, isLongHair: false },
+  // { image: rouge, isLongHair: true },
+  // { image: vivresavie, isLongHair: false },
+  // { image: womenwhoran, isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
+
 ]
 
 let counter = 0;
-
-// Function that's called every time an image is swiped
-function onSwipe(direction, isLongHair) {
-  if ((direction === 'right' && isLongHair) || 
-      (direction === 'left' && !isLongHair)) {
-    counter += 1;
-  } else {
-    counter -= 1;
-  }
-}
-
-// Function to evaluate the result after all images are swiped
-function evaluateResult() {
-  if (counter > 0) {
-    return 'keep growing your hair';
-  } else if (counter < 0) {
-    return 'cut your hair';
-  } else {
-    return 'balanced preference'; // or any default recommendation
-  }
-}
-
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i: number) => ({
@@ -82,15 +81,41 @@ function Deck() {
   //defining left and right
   let left = false;
   let right = false;
+
+
+// Function to evaluate the result after all images are swiped
+function evaluateResult() {
+  if (counter > 0) {
+    return 'keep growing your hair';
+  } else if (counter < 0) {
+    return 'cut your hair';
+  } else {
+    return 'balanced preference'; // or any default recommendation
+  }
+}
   
+// Function that's called every time an image is swiped
+function onSwipe(direction: 'left' | 'right', isLongHair: boolean) {
+  if ((direction === 'right' && right) || (direction === 'left' && left)) {
+    counter += 1;
+  } else {
+    counter -= 1;
+  }
+  console.log(counter);
+}
+
   const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
     const trigger = velocity > 0.2 // If you flick hard enough it should trigger the card to fly out
     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
-    
+      
     left = dir === -1;
     right = dir === 1;
-    
-    if (!down && trigger) gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+    // const direction = dir === -1 ? 'left' : 'right';
+
+    if (!down && trigger) {
+      gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+      onSwipe(direction, cards[index].isLongHair);
+  }
     api.start(i => {
       if (index !== i) return // We're only interested in changing spring-data for the current spring
       const isGone = gone.has(index)
@@ -109,8 +134,14 @@ function Deck() {
       setTimeout(() => {
         gone.clear()
         api.start(i => to(i))
-      }, 600)
+  
+          // Now that all cards have been swiped, evaluate the result
+          const result = evaluateResult();
+          console.log(result); // Or update a state variable to display it in the UI
+        }, 600);
+      
   })
+
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
     <>
@@ -121,10 +152,13 @@ function Deck() {
             {...bind(i)}
             style={{
               transform: interpolate([rot, scale], trans),
-              backgroundImage: `url(${cards[i]})`,
+              backgroundImage: `url(${cards[i].image})`,
             }}
+            // className={styles.card}
           />
         </animated.div>
+
+
       ))}
     </>
   )
