@@ -73,6 +73,7 @@ const trans = (r: number, s: number) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
 function Deck() {
+  const [result, setResult] = useState('');
   const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
   const [props, api] = useSprings(cards.length, i => ({
     ...to(i),
@@ -110,6 +111,12 @@ function evaluateResult() {
     return 'balanced preference'; // or any default recommendation
   }
 }
+
+function handleEndOfSwiping() {
+  const evaluationResult = evaluateResult();
+  setResult(evaluationResult); // Update the state
+}
+
   
   const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
     const trigger = velocity > 0.2 // If you flick hard enough it should trigger the card to fly out
@@ -143,8 +150,8 @@ function evaluateResult() {
         api.start(i => to(i))
   
           // Now that all cards have been swiped, evaluate the result
-          const result = evaluateResult();
-          console.log(result); // Or update a state variable to display it in the UI
+          handleEndOfSwiping();
+          // console.log(result); // Or update a state variable to display it in the UI
         }, 600);
       
   })
@@ -165,10 +172,10 @@ function evaluateResult() {
           />
         </animated.div>
 
-
       ))}
+        {result && <div className="result-display">{result}</div>}
     </>
-  )
+  );
 }
 
 export default function App() {
