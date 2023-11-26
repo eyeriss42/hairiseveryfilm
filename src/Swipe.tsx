@@ -144,15 +144,22 @@ function handleEndOfSwiping() {
         config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
       }
     })
-    if (!down && gone.size === cards.length)
-      setTimeout(() => {
-        gone.clear()
-        api.start(i => to(i))
+
+    // if i wanted to reshuffle
+    // if (!down && gone.size === cards.length)
+    //   setTimeout(() => {
+    //     gone.clear()
+    //     api.start(i => to(i))
   
-          // Now that all cards have been swiped, evaluate the result
-          handleEndOfSwiping();
-          // console.log(result); // Or update a state variable to display it in the UI
-        }, 600);
+    //       // Now that all cards have been swiped, evaluate the result
+    //       handleEndOfSwiping();
+    //       // console.log(result); // Or update a state variable to display it in the UI
+    //     }, 600);
+
+    if (!down && gone.size === cards.length) {
+      handleEndOfSwiping(); 
+    }
+    
       
   })
 
