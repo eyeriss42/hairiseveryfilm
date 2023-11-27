@@ -2,19 +2,22 @@ import  { useState } from 'react'
 import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
 import styles from './swipestyles.module.css'
+import Result from './Result';
 
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 
-import nomadland from "src/assets/nomadland.jpeg";
-import rouge from "src/assets/rouge.jpeg";
-import vivresavie from "src/assets/vivresavie.jpeg";
-import womenwhoran from "src/assets/womenwhoran.jpeg";
+// import nomadland from "src/assets/nomadland.jpeg";
+// import rouge from "src/assets/rouge.jpeg";
+// import vivresavie from "src/assets/vivresavie.jpeg";
+// import womenwhoran from "src/assets/womenwhoran.jpeg";
 
 // import cards from "/src/assets/cards.js";
 
 interface Card {
   image: string;
   isLongHair: boolean;
+  character: string;
+  movie: string;
 }
 
 const cards: Card[] = [
@@ -22,39 +25,25 @@ const cards: Card[] = [
   // { image: rouge, isLongHair: true },
   // { image: vivresavie, isLongHair: false },
   // { image: womenwhoran, isLongHair: true },
-  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
-  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
-  { image: 'https://m.media-amazon.com/images/M/MV5BOGY0MzcxZmItNDAzMC00OGUyLTkxYmEtODJlYTE1OWY1NjU2XkEyXkFqcGdeQWpnYW1i._V1_.jpg', isLongHair: false },
-  { image: 'https://i.ytimg.com/vi/I1EtvERDcqw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAkXDGvDhCU7oCxqeEh5ET6TpcugA', isLongHair: false },
-  { image: 'https://assets.vogue.com/photos/615c664300122a1a679f53f1/4:3/w_2396,h_1797,c_limit/MCDROTE_EC021.jpeg', isLongHair: false },
-  { image: 'https://64.media.tumblr.com/ed8b27531fd815312c7b71e28b91d7e3/tumblr_n96s2c0A3J1t144d3o2_1280.jpg', isLongHair: true },
-  { image: 'https://springbackmagazine.com/wp-content/uploads/2018/07/a-girl-walks-home-alone-at-night.jpg', isLongHair: false },
-  { image: 'https://static01.nyt.com/images/2022/02/02/arts/worst-person-anatomy2/worst-person-anatomy2-superJumbo-v2.jpg', isLongHair: true },
-  { image: 'https://i.pinimg.com/originals/e7/6c/40/e76c4005311ab78f14b0668b1ae7a9f6.jpg', isLongHair: false },
-  { image: 'https://img.youtube.com/vi/XeISaoQDh2g/maxresdefault.jpg', isLongHair: false },
-  { image: 'https://m.media-amazon.com/images/M/MV5BMTlmOTExYmUtOWZkOS00YmNiLWIyNzctMjg3NjNkNjlmNTI0XkEyXkFqcGdeQXVyMzIwNDY4NDI@._V1_.jpg', isLongHair: false },
-  { image: 'https://www.slashfilm.com/img/gallery/shifting-his-focus-to-female-led-films-felt-natural-for-park-chan-wook/l-intro-1652794415.jpg', isLongHair: true },
-  { image: 'https://cineuropa.org/imgCache/2021/08/23/1629718517738_1000x0702_0x0x0x0_1679266092973.jpg', isLongHair: false },
-  { image: 'https://www.indiewire.com/wp-content/uploads/2020/06/Screen-Shot-2020-06-25-at-10.30.13-AM.png', isLongHair: false },
-  { image: 'https://2.bp.blogspot.com/-uK7QBz3DtzQ/V5gQtuwtHII/AAAAAAAAHOQ/kl4sAhaVJAAmqs115uiGMrFuRTWu2LDlACLcB/s1600/The%2BMirror%2B6.jpg', isLongHair: true },
-  { image: 'https://media.nouvelobs.com/ext/uri/sreferentiel.nouvelobs.com/file/rue89/604644e046925b2a804cf087703c5023.jpg', isLongHair: true },
-  { image: 'https://dafilmfestival.com/wp-content/uploads/2019/11/RET_la-belle-personne-1600x900.jpg', isLongHair: true },
-  { image: 'https://variety.com/wp-content/uploads/2022/03/Screen-Shot-2022-03-01-at-9.11.46-AM.png', isLongHair: false },
-  { image: 'https://media.newyorker.com/photos/5e2b32a45b5737000854e517/master/pass/Brody-JustAnotherGirlontheIRT.jpg', isLongHair: true },
-  // { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
-  // { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
-  // { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
-  // { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
-  // { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
-  // { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
-  // { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
-  // { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
-  // { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
-  // { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
-  // { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
-  // { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false },
-  // { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true },
-
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false, character: 'Fleur', movie:'Rouge' },
+  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true, character: 'Vicky', movie:'Milenium Mambo' },
+  { image: 'https://m.media-amazon.com/images/M/MV5BOGY0MzcxZmItNDAzMC00OGUyLTkxYmEtODJlYTE1OWY1NjU2XkEyXkFqcGdeQWpnYW1i._V1_.jpg', isLongHair: false, character: 'Leda', movie:'The Lost Daughter'},
+  { image: 'https://i.ytimg.com/vi/I1EtvERDcqw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAkXDGvDhCU7oCxqeEh5ET6TpcugA', isLongHair: false, character: 'Nana', movie:'Vivre Sa Vie' },
+  { image: 'https://assets.vogue.com/photos/615c664300122a1a679f53f1/4:3/w_2396,h_1797,c_limit/MCDROTE_EC021.jpeg', isLongHair: false, character: 'Margot', movie:'The Royal Tenenbaums' },
+  { image: 'https://64.media.tumblr.com/ed8b27531fd815312c7b71e28b91d7e3/tumblr_n96s2c0A3J1t144d3o2_1280.jpg', isLongHair: true, character: 'Isabelle', movie:'The Dreamers' },
+  { image: 'https://springbackmagazine.com/wp-content/uploads/2018/07/a-girl-walks-home-alone-at-night.jpg', isLongHair: false, character: '', movie:'' },
+  { image: 'https://static01.nyt.com/images/2022/02/02/arts/worst-person-anatomy2/worst-person-anatomy2-superJumbo-v2.jpg', isLongHair: true, character: '', movie:'' },
+  { image: 'https://i.pinimg.com/originals/e7/6c/40/e76c4005311ab78f14b0668b1ae7a9f6.jpg', isLongHair: false, character: '', movie:'' },
+  { image: 'https://img.youtube.com/vi/XeISaoQDh2g/maxresdefault.jpg', isLongHair: false, character: '', movie:''  },
+  { image: 'https://m.media-amazon.com/images/M/MV5BMTlmOTExYmUtOWZkOS00YmNiLWIyNzctMjg3NjNkNjlmNTI0XkEyXkFqcGdeQXVyMzIwNDY4NDI@._V1_.jpg', isLongHair: false, character: '', movie:'' },
+  { image: 'https://www.slashfilm.com/img/gallery/shifting-his-focus-to-female-led-films-felt-natural-for-park-chan-wook/l-intro-1652794415.jpg', isLongHair: true, character: '', movie:'' },
+  { image: 'https://cineuropa.org/imgCache/2021/08/23/1629718517738_1000x0702_0x0x0x0_1679266092973.jpg', isLongHair: false, character: '', movie:'' },
+  { image: 'https://www.indiewire.com/wp-content/uploads/2020/06/Screen-Shot-2020-06-25-at-10.30.13-AM.png', isLongHair: false, character: '', movie:'' },
+  { image: 'https://2.bp.blogspot.com/-uK7QBz3DtzQ/V5gQtuwtHII/AAAAAAAAHOQ/kl4sAhaVJAAmqs115uiGMrFuRTWu2LDlACLcB/s1600/The%2BMirror%2B6.jpg', isLongHair: true, character: '', movie:'' },
+  { image: 'https://media.nouvelobs.com/ext/uri/sreferentiel.nouvelobs.com/file/rue89/604644e046925b2a804cf087703c5023.jpg', isLongHair: true, character: '', movie:'' },
+  { image: 'https://dafilmfestival.com/wp-content/uploads/2019/11/RET_la-belle-personne-1600x900.jpg', isLongHair: true, character: 'Junie', movie:'The Beautiful Person' },
+  { image: 'https://variety.com/wp-content/uploads/2022/03/Screen-Shot-2022-03-01-at-9.11.46-AM.png', isLongHair: false, character: 'Catwoman', movie:'Batman' },
+  { image: 'https://media.newyorker.com/photos/5e2b32a45b5737000854e517/master/pass/Brody-JustAnotherGirlontheIRT.jpg', isLongHair: true, character: 'Chantel', movie:'Just Another Girl on the I.R.T.'}
 ]
 
 let counter = 0;
@@ -73,22 +62,15 @@ const trans = (r: number, s: number) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
 function Deck() {
-  const [outcome, setOutcome] = useState({ result: '', counter: 0 });
+  const [outcome, setOutcome] = useState({ result: '', counter: 0, image: '' });
   const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
+  const [topCardIndex, setTopCardIndex] = useState(0); 
   const [props, api] = useSprings(cards.length, i => ({
     ...to(i),
     from: from(i),
   })) // Create a bunch of springs using the helpers above
   // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
   
-
-  // //defining left and right
-  // const left = false;
-  // const right = false;
-
-// Function to evaluate the result after all images are swiped
-
-// Function that's called every time an image is swiped
 function onSwipe(direction: 'left' | 'right', isLongHair: boolean) {
   if ((direction === 'right' && isLongHair) || (direction === 'left' && !isLongHair)) {
     counter += 1;
@@ -98,17 +80,21 @@ function onSwipe(direction: 'left' | 'right', isLongHair: boolean) {
   console.log(counter);
 }
 
-
 function evaluateResult() {
   let message;
+  let imageUrl;
   if (counter > 0) {
-    message = 'keep growing your hair';
+    message = "keep growing your hair";
+    imageUrl = 'https://deadline.com/wp-content/uploads/2023/04/0YLpt67-421-e1683816972149.jpg';
   } else if (counter < 0) {
-    message = 'cut your hair';
+    message = "it's time to cut your hair";
+    imageUrl = 'https://s3.amazonaws.com/festivaldorio/2021/site/peliculas/large2/pierrotle_f03cor_2019113395.jpg';
   } else {
-    message = 'balanced preference'; 
+    message = "you're undecided"; 
+    imageUrl = 'https://www.ingmarbergman.se/sites/default/files/persona_1.jpg';
+
   }
-  return {result: message, counter};
+    return { result: message, counter, image: imageUrl };
 }
 
 function handleEndOfSwiping() {
@@ -116,18 +102,16 @@ function handleEndOfSwiping() {
   setOutcome(evaluationResult); // Update the state
 }
 
-  
-  const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
+const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
     const trigger = velocity > 0.2 // If you flick hard enough it should trigger the card to fly out
     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
       
-    // left = dir === -1;
-    // right = dir === 1;
     const direction = dir === -1 ? 'left' : 'right';
 
     if (!down && trigger) {
       gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
       onSwipe(direction, cards[index].isLongHair);
+      setTopCardIndex(topCardIndex + 1);
   }
     api.start(i => {
       if (index !== i) return // We're only interested in changing spring-data for the current spring
@@ -162,7 +146,6 @@ function handleEndOfSwiping() {
       
   })
 
-  // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
     <>
       {props.map(({ x, y, rot, scale }, i) => (
@@ -177,11 +160,35 @@ function handleEndOfSwiping() {
             // className={styles.card}
           />
         </animated.div>
-
       ))}
-      
-        {outcome.result && <div className="result-display">{outcome.result}  <p>because your score is {outcome.counter}</p></div>}
-        
+
+      {cards[topCardIndex] && (
+        <div className="card-details">
+          <h3>{cards[topCardIndex].character}</h3>
+          <p>from {cards[topCardIndex].movie}</p>
+        </div>
+      )}
+      {/* 
+      <div className="card-details">
+        {cards.map((card, index) => (
+          <div key={index}>
+            <h3>{card.character}</h3>
+            <p>from {card.movie}</p>
+          </div>
+        ))}
+      </div> */}
+
+      {outcome.image && (
+        <div className="result-image">
+          <img src={outcome.image} alt="Result Image"/>
+        </div>
+      )}
+
+      {outcome.result && (
+        <div className="result-display">
+          {outcome.result} <p> your score is {outcome.counter}</p>
+        </div>
+      )}
     </>
   );
 }
@@ -191,5 +198,6 @@ export default function App() {
     <div className={styles.container}>
       <Deck />
     </div>
+    
   )
 }

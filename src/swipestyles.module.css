@@ -1,5 +1,5 @@
 .container {
-    background: lightblue;
+    /* background: lightblue; */
     cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,
       auto;
     display: flex;
@@ -7,7 +7,9 @@
     height: 100%;
     justify-content: center;
   }
-  .deck {
+
+
+.deck {
     position: absolute;
     width: 300px;
     height: 200px;
@@ -18,7 +20,7 @@
     touch-action: none;
   }
   
-  .deck > div {
+.deck > div {
     background-color: rgb(255, 255, 255);
     background-size: auto 85%;
     background-repeat: no-repeat;
@@ -32,3 +34,14 @@
     box-shadow: 0 6px 20px -5px rgba(50, 50, 73, 0.2), 0 5px 5px -5px rgba(50, 50, 73, 0.1);
   }
   
+  .card-details {
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+  }  
+
+  .result-image{
+    width: 100%; /* Use 100% width to fill the container */
+    max-width: 100%; /* Ensure the image doesn't exceed the container's width */
+    height: auto;
+  }
