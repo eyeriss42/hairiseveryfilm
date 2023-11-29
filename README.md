@@ -1,8 +1,5 @@
 # Hair is everyfilm
 
-Hair is everything.
+Hair is everyfilm is an app that will help you decide whether you should cut your hair based on swiping haircuts from movies.
 
-We wish it wasn’t so we could actually think about something else occasionally. But it is. It’s the difference between a good day and a bad day. We’re meant to think that it’s a symbol of power, that it’s a symbol of fertility. Some people are exploited for it and it pays your f~~~ bills. 
-
-Hair is everyfilm.
-
+inspired by [fleabag](https://www.youtube.com/watch?v=q97iIDx-b7U)
