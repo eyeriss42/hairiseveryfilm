@@ -36,11 +36,11 @@ const cards: Card[] = [
   { image: 'https://i.pinimg.com/originals/e7/6c/40/e76c4005311ab78f14b0668b1ae7a9f6.jpg', isLongHair: false, character: '', movie:'' },
   { image: 'https://img.youtube.com/vi/XeISaoQDh2g/maxresdefault.jpg', isLongHair: false, character: '', movie:''  },
   { image: 'https://m.media-amazon.com/images/M/MV5BMTlmOTExYmUtOWZkOS00YmNiLWIyNzctMjg3NjNkNjlmNTI0XkEyXkFqcGdeQXVyMzIwNDY4NDI@._V1_.jpg', isLongHair: false, character: '', movie:'' },
-  { image: 'https://www.slashfilm.com/img/gallery/shifting-his-focus-to-female-led-films-felt-natural-for-park-chan-wook/l-intro-1652794415.jpg', isLongHair: true, character: '', movie:'' },
-  { image: 'https://cineuropa.org/imgCache/2021/08/23/1629718517738_1000x0702_0x0x0x0_1679266092973.jpg', isLongHair: false, character: '', movie:'' },
-  { image: 'https://www.indiewire.com/wp-content/uploads/2020/06/Screen-Shot-2020-06-25-at-10.30.13-AM.png', isLongHair: false, character: '', movie:'' },
-  { image: 'https://2.bp.blogspot.com/-uK7QBz3DtzQ/V5gQtuwtHII/AAAAAAAAHOQ/kl4sAhaVJAAmqs115uiGMrFuRTWu2LDlACLcB/s1600/The%2BMirror%2B6.jpg', isLongHair: true, character: '', movie:'' },
-  { image: 'https://media.nouvelobs.com/ext/uri/sreferentiel.nouvelobs.com/file/rue89/604644e046925b2a804cf087703c5023.jpg', isLongHair: true, character: '', movie:'' },
+  { image: 'https://www.slashfilm.com/img/gallery/shifting-his-focus-to-female-led-films-felt-natural-for-park-chan-wook/l-intro-1652794415.jpg', isLongHair: true, character: 'Lady Hideko', movie:'Handmaiden' },
+  { image: 'https://cineuropa.org/imgCache/2021/08/23/1629718517738_1000x0702_0x0x0x0_1679266092973.jpg', isLongHair: false, character: 'Ada', movie:'Unclenching the Fists' },
+  // { image: 'https://www.indiewire.com/wp-content/uploads/2020/06/Screen-Shot-2020-06-25-at-10.30.13-AM.png', isLongHair: false, character: '', movie:'' },
+  { image: 'https://2.bp.blogspot.com/-uK7QBz3DtzQ/V5gQtuwtHII/AAAAAAAAHOQ/kl4sAhaVJAAmqs115uiGMrFuRTWu2LDlACLcB/s1600/The%2BMirror%2B6.jpg', isLongHair: true, character: 'Natalya', movie:'Mirror' },
+  { image: 'https://media.nouvelobs.com/ext/uri/sreferentiel.nouvelobs.com/file/rue89/604644e046925b2a804cf087703c5023.jpg', isLongHair: true, character: 'Laurence', movie:'Laurence Anyways' },
   { image: 'https://dafilmfestival.com/wp-content/uploads/2019/11/RET_la-belle-personne-1600x900.jpg', isLongHair: true, character: 'Junie', movie:'The Beautiful Person' },
   { image: 'https://variety.com/wp-content/uploads/2022/03/Screen-Shot-2022-03-01-at-9.11.46-AM.png', isLongHair: false, character: 'Catwoman', movie:'Batman' },
   { image: 'https://media.newyorker.com/photos/5e2b32a45b5737000854e517/master/pass/Brody-JustAnotherGirlontheIRT.jpg', isLongHair: true, character: 'Chantel', movie:'Just Another Girl on the I.R.T.'}
@@ -66,6 +66,8 @@ function Deck() {
   const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
   // const [topCardIndex, setTopCardIndex] = useState(0); 
   // const [deckPosition, setDeckPosition] = useState({ x: 0, y: 0 }); 
+  const [draggedCardIndex, setDraggedCardIndex] = useState(null);
+
   const [props, api] = useSprings(cards.length, i => ({
     ...to(i),
     from: from(i),
@@ -106,11 +108,18 @@ function handleEndOfSwiping() {
 
 const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 });
 
+
 const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
     const trigger = velocity > 1 // If you flick hard enough it should trigger the card to fly out
     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
       
     const direction = dir === -1 ? 'left' : 'right';
+
+    if (down) {
+      setDraggedCardIndex(index);
+    } else {
+      setDraggedCardIndex(null);
+    }
 
     setDotPosition({ x: mx});
 
@@ -189,11 +198,11 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
 
         </animated.div>
       ))}
-
+{/* 
 <div
       style={{
         position: 'absolute',
-        bottom: '-10px', // Adjust this value to position below the deck
+        bottom: '-5px', // Adjust this value to position below the deck
         left: `calc(50% + ${dotPosition.x}px)`, // Center the dot and adjust based on drag
         width: '10px',
         height: '10px',
@@ -201,7 +210,39 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
         backgroundColor: 'red', // Or any color you prefer
         transform: 'translateX(-50%)' // Center the dot horizontally
       }}
-    />
+
+      /> */}
+
+<div style={{
+    position: 'absolute',
+    bottom: '40px',
+    left: `calc(50% + ${dotPosition.x}px)`,
+    transform: 'translateX(-50%)'
+}}>
+    {draggedCardIndex !== null && (
+        <div style={{ marginLeft: '15px', display: 'inline-block' }}>
+            {cards[draggedCardIndex].character} from {cards[draggedCardIndex].movie}
+        </div>
+    )}
+    <div style={{
+        width: '10px',
+        height: '10px',
+        borderRadius: '50%',
+        backgroundColor: 'red',
+    }} />
+</div>
+
+{/* 
+{draggedCardIndex !== null && (
+      <div style={{
+        position: 'absolute',
+        left: `50%`, // Center horizontally
+        bottom: '-5px', // Position below the deck
+        transform: `translateX(${dotPosition.x}px)`, // Move horizontally based on drag
+      }}>
+        {cards[draggedCardIndex].character}
+      </div>
+    )} */}
 
       {/* <animated.div
         style={{
