@@ -7,7 +7,17 @@
     height: 100%;
     justify-content: center;
   }
-
+  
+  .custom-cursor {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 100%;
+    background-color: #bfff00;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width .3s, height .3s, opacity .3s;
+  }
 
 .deck {
     position: absolute;
@@ -40,8 +50,15 @@
     width: 100%;
   }  
 
-  .result-image{
-    width: 100%; /* Use 100% width to fill the container */
-    max-width: 100%; /* Ensure the image doesn't exceed the container's width */
-    height: auto;
+ 
+  .result-image {
+    width: 33.33%; /* Set width to 1/3 of the container's width */
+    height: 33.33%; /* Set height to 1/3 of the container's height */
+    max-width: none; /* Remove max-width constraint */
+    max-height: none; /* Remove max-height constraint */
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the image within the container */
   }
+  

@@ -5,6 +5,7 @@ import Swipe from "./Swipe.tsx";
 function App() {
   return (
     <>
+
       <div className="container">
         <header>
           <h1 className="header-title">hair is everyfilm</h1>

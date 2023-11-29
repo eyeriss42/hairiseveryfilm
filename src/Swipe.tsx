@@ -59,18 +59,20 @@ const to = (i: number) => ({
 const from = (_i: number) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
 // This is being used down there in the view, it interpolates rotation and scale into a css transform
 const trans = (r: number, s: number) =>
-  `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
+  `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s * 1.2})`
 
 function Deck() {
   const [outcome, setOutcome] = useState({ result: '', counter: 0, image: '' });
   const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
-  const [topCardIndex, setTopCardIndex] = useState(0); 
+  // const [topCardIndex, setTopCardIndex] = useState(0); 
+  // const [deckPosition, setDeckPosition] = useState({ x: 0, y: 0 }); 
   const [props, api] = useSprings(cards.length, i => ({
     ...to(i),
     from: from(i),
   })) // Create a bunch of springs using the helpers above
   // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
   
+
 function onSwipe(direction: 'left' | 'right', isLongHair: boolean) {
   if ((direction === 'right' && isLongHair) || (direction === 'left' && !isLongHair)) {
     counter += 1;
@@ -85,7 +87,7 @@ function evaluateResult() {
   let imageUrl;
   if (counter > 0) {
     message = "keep growing your hair";
-    imageUrl = 'https://deadline.com/wp-content/uploads/2023/04/0YLpt67-421-e1683816972149.jpg';
+    imageUrl = 'https://images.mubicdn.net/images/film/293109/cache-873257-1682687759/image-w1280.jpg?size=800x';
   } else if (counter < 0) {
     message = "it's time to cut your hair";
     imageUrl = 'https://s3.amazonaws.com/festivaldorio/2021/site/peliculas/large2/pierrotle_f03cor_2019113395.jpg';
@@ -102,21 +104,25 @@ function handleEndOfSwiping() {
   setOutcome(evaluationResult); // Update the state
 }
 
+const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 });
+
 const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
-    const trigger = velocity > 0.2 // If you flick hard enough it should trigger the card to fly out
+    const trigger = velocity > 1 // If you flick hard enough it should trigger the card to fly out
     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
       
     const direction = dir === -1 ? 'left' : 'right';
 
+    setDotPosition({ x: mx});
+
     if (!down && trigger) {
       gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
       onSwipe(direction, cards[index].isLongHair);
-      setTopCardIndex(topCardIndex + 1);
+      // setTopCardIndex(topCardIndex + 1);
   }
     api.start(i => {
       if (index !== i) return // We're only interested in changing spring-data for the current spring
       const isGone = gone.has(index)
-      const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0 // When a card is gone it flys out left or right, otherwise goes back to zero
+      const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0 // When a card is gone it flies out left or right, otherwise goes back to zero
       const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0) // How much the card tilts, flicking it harder makes it rotate faster
       const scale = down ? 1.1 : 1 // Active cards lift up a bit
       return {
@@ -127,6 +133,10 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
         config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
       }
     })
+
+    // const updateDeckPosition = (newX, newY) => {
+    //   setDeckPosition({ x: newX, y: newY });
+    // };
 
     // if i wanted to reshuffle
     // if (!down && gone.size === cards.length)
@@ -148,45 +158,82 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
 
   return (
     <>
-      {props.map(({ x, y, rot, scale }, i) => (
-        <animated.div className={styles.deck} key={i} style={{ x, y }}>
-          {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
+{/* <div className={styles.deckContainer}>
+    {props.map(({ x, y, rot, scale }, i) => (
+      <div key={i} style={{ position: 'relative' }}>
+        <animated.div className={styles.deck} style={{ x, y }}>
           <animated.div
             {...bind(i)}
             style={{
               transform: interpolate([rot, scale], trans),
               backgroundImage: `url(${cards[i].image})`,
             }}
-            // className={styles.card}
           />
+        </animated.div>
+        <animated.div className={styles.cardText} style={{ transform: `translate3d(${x}px, ${y}+100px, 0)`, position: 'absolute' }}>
+          {cards[i].character}
+        </animated.div>
+      </div>
+    ))}
+  </div> */}
+      {props.map(({ x, y, rot, scale }, i) => (
+        <animated.div className={styles.deck} key={i} style={{ x, y }}>
+          <animated.div
+            {...bind(i)}
+            style={{
+              transform: interpolate([rot, scale], trans),
+              backgroundImage: `url(${cards[i].image})`,
+            }}
+          />
+                     {/* <div>{cards[i].character}</div>  */}
+
         </animated.div>
       ))}
 
-      {cards[topCardIndex] && (
+<div
+      style={{
+        position: 'absolute',
+        bottom: '-10px', // Adjust this value to position below the deck
+        left: `calc(50% + ${dotPosition.x}px)`, // Center the dot and adjust based on drag
+        width: '10px',
+        height: '10px',
+        borderRadius: '50%',
+        backgroundColor: 'red', // Or any color you prefer
+        transform: 'translateX(-50%)' // Center the dot horizontally
+      }}
+    />
+
+      {/* <animated.div
+        style={{
+          position: "absolute",
+          bottom: "20px", // Adjust this value as needed
+          left: deckPosition.x,
+          transform: `translateY(${deckPosition.y}px)`,
+        }}
+      >
+        <p>Your dynamic text here</p>
+      </animated.div> */}
+
+      {/* {cards[topCardIndex] && (
         <div className="card-details">
           <h3>{cards[topCardIndex].character}</h3>
           <p>from {cards[topCardIndex].movie}</p>
         </div>
-      )}
-      {/* 
-      <div className="card-details">
-        {cards.map((card, index) => (
-          <div key={index}>
-            <h3>{card.character}</h3>
-            <p>from {card.movie}</p>
-          </div>
-        ))}
-      </div> */}
+      )} */}
 
       {outcome.image && (
         <div className="result-image">
-          <img src={outcome.image} alt="Result Image"/>
-        </div>
-      )}
-
-      {outcome.result && (
-        <div className="result-display">
-          {outcome.result} <p> your score is {outcome.counter}</p>
+          <img src={outcome.image} alt="Result Image" />
+          <div className="result-text">
+            <p
+              style={{ fontSize: "18px", fontWeight: "bold", padding: "10px" }}
+            >
+              {outcome.result}{" "}
+              <span style={{ fontSize: "16px", fontWeight: "normal" }}>
+                your score is {outcome.counter}
+              </span>
+            </p>
+          </div>
         </div>
       )}
     </>
