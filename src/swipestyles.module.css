@@ -32,17 +32,19 @@
   
 .deck > div {
     background-color: rgb(255, 255, 255);
-    background-size: auto 85%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    width: 400vh;
-    max-width: 600px;
-    height: 200vh;
-    max-height: 400px;
+    width: 40vh;
+    max-width: 600px; 
+    height: 30vh; 
+    max-height: 400px; 
     will-change: transform;
     border-radius: 10px;
     box-shadow: 0 6px 20px -5px rgba(50, 50, 73, 0.2), 0 5px 5px -5px rgba(50, 50, 73, 0.1);
+    /* border: 10px solid white; */
   }
+
   
   .card-details {
     position: absolute;

@@ -1,16 +1,23 @@
 import "./App.css";
 import Swipe from "./Swipe.tsx";
 // import nomadland from "/src/assets/nomadland.jpeg";
+import Intro from './Intro';
+// 
 
 function App() {
   return (
     <>
-
       <div className="container">
         <header>
           <h1 className="header-title">hair is everyfilm</h1>
         </header>
+
+        <div className="intro">
+            <Intro />
+          </div>
+
         <section className="main">
+      
           <Swipe />
         </section>
       </div>

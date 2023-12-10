@@ -50,6 +50,11 @@ body {
   /* background: #893d3d; */
 }
 
+.intro{
+  position: relative;
+  top: -235px; 
+}
+
 footer {
   color: #000000;
   text-align: left;

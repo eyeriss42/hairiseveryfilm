@@ -25,26 +25,30 @@ const cards: Card[] = [
   // { image: rouge, isLongHair: true },
   // { image: vivresavie, isLongHair: false },
   // { image: womenwhoran, isLongHair: true },
-  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false, character: 'Fleur', movie:'Rouge' },
   { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true, character: 'Vicky', movie:'Milenium Mambo' },
   { image: 'https://m.media-amazon.com/images/M/MV5BOGY0MzcxZmItNDAzMC00OGUyLTkxYmEtODJlYTE1OWY1NjU2XkEyXkFqcGdeQWpnYW1i._V1_.jpg', isLongHair: false, character: 'Leda', movie:'The Lost Daughter'},
-  { image: 'https://i.ytimg.com/vi/I1EtvERDcqw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAkXDGvDhCU7oCxqeEh5ET6TpcugA', isLongHair: false, character: 'Nana', movie:'Vivre Sa Vie' },
   { image: 'https://assets.vogue.com/photos/615c664300122a1a679f53f1/4:3/w_2396,h_1797,c_limit/MCDROTE_EC021.jpeg', isLongHair: false, character: 'Margot', movie:'The Royal Tenenbaums' },
   { image: 'https://64.media.tumblr.com/ed8b27531fd815312c7b71e28b91d7e3/tumblr_n96s2c0A3J1t144d3o2_1280.jpg', isLongHair: true, character: 'Isabelle', movie:'The Dreamers' },
-  { image: 'https://springbackmagazine.com/wp-content/uploads/2018/07/a-girl-walks-home-alone-at-night.jpg', isLongHair: false, character: '', movie:'' },
-  { image: 'https://static01.nyt.com/images/2022/02/02/arts/worst-person-anatomy2/worst-person-anatomy2-superJumbo-v2.jpg', isLongHair: true, character: '', movie:'' },
-  { image: 'https://i.pinimg.com/originals/e7/6c/40/e76c4005311ab78f14b0668b1ae7a9f6.jpg', isLongHair: false, character: '', movie:'' },
-  { image: 'https://img.youtube.com/vi/XeISaoQDh2g/maxresdefault.jpg', isLongHair: false, character: '', movie:''  },
-  { image: 'https://m.media-amazon.com/images/M/MV5BMTlmOTExYmUtOWZkOS00YmNiLWIyNzctMjg3NjNkNjlmNTI0XkEyXkFqcGdeQXVyMzIwNDY4NDI@._V1_.jpg', isLongHair: false, character: '', movie:'' },
+  { image: 'https://springbackmagazine.com/wp-content/uploads/2018/07/a-girl-walks-home-alone-at-night.jpg', isLongHair: false, character: 'Shirin', movie:'A Girl Walks Home Alone at Night' },
+  { image: 'https://static01.nyt.com/images/2022/02/02/arts/worst-person-anatomy2/worst-person-anatomy2-superJumbo-v2.jpg', isLongHair: true, character: 'Julie', movie:'The Worst Person in the World' },
+  { image: 'https://i.pinimg.com/originals/e7/6c/40/e76c4005311ab78f14b0668b1ae7a9f6.jpg', isLongHair: false, character: 'Tina', movie:'Do the Right Thing' },
+  { image: 'https://img.youtube.com/vi/XeISaoQDh2g/maxresdefault.jpg', isLongHair: false, character: 'Detroit', movie:'Sorry to Bother You'  },
+  { image: 'https://m.media-amazon.com/images/M/MV5BMTlmOTExYmUtOWZkOS00YmNiLWIyNzctMjg3NjNkNjlmNTI0XkEyXkFqcGdeQXVyMzIwNDY4NDI@._V1_.jpg', isLongHair: false, character: 'Noqreh', movie:'At Five in the Afternoon' },
   { image: 'https://www.slashfilm.com/img/gallery/shifting-his-focus-to-female-led-films-felt-natural-for-park-chan-wook/l-intro-1652794415.jpg', isLongHair: true, character: 'Lady Hideko', movie:'Handmaiden' },
   { image: 'https://cineuropa.org/imgCache/2021/08/23/1629718517738_1000x0702_0x0x0x0_1679266092973.jpg', isLongHair: false, character: 'Ada', movie:'Unclenching the Fists' },
-  // { image: 'https://www.indiewire.com/wp-content/uploads/2020/06/Screen-Shot-2020-06-25-at-10.30.13-AM.png', isLongHair: false, character: '', movie:'' },
+  { image: 'https://www.indiewire.com/wp-content/uploads/2020/06/Screen-Shot-2020-06-25-at-10.30.13-AM.png', isLongHair: false, character: 'Ava', movie:'Ex Machina' },
   { image: 'https://2.bp.blogspot.com/-uK7QBz3DtzQ/V5gQtuwtHII/AAAAAAAAHOQ/kl4sAhaVJAAmqs115uiGMrFuRTWu2LDlACLcB/s1600/The%2BMirror%2B6.jpg', isLongHair: true, character: 'Natalya', movie:'Mirror' },
   { image: 'https://media.nouvelobs.com/ext/uri/sreferentiel.nouvelobs.com/file/rue89/604644e046925b2a804cf087703c5023.jpg', isLongHair: true, character: 'Laurence', movie:'Laurence Anyways' },
   { image: 'https://dafilmfestival.com/wp-content/uploads/2019/11/RET_la-belle-personne-1600x900.jpg', isLongHair: true, character: 'Junie', movie:'The Beautiful Person' },
   { image: 'https://variety.com/wp-content/uploads/2022/03/Screen-Shot-2022-03-01-at-9.11.46-AM.png', isLongHair: false, character: 'Catwoman', movie:'Batman' },
-  { image: 'https://media.newyorker.com/photos/5e2b32a45b5737000854e517/master/pass/Brody-JustAnotherGirlontheIRT.jpg', isLongHair: true, character: 'Chantel', movie:'Just Another Girl on the I.R.T.'}
+  { image: 'https://i.ytimg.com/vi/I1EtvERDcqw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAkXDGvDhCU7oCxqeEh5ET6TpcugA', isLongHair: false, character: 'Nana', movie:'Vivre Sa Vie' },
+  { image: 'https://media.newyorker.com/photos/5e2b32a45b5737000854e517/master/pass/Brody-JustAnotherGirlontheIRT.jpg', isLongHair: true, character: 'Chantel', movie:'Just Another Girl on the I.R.T.'},
+  { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSOF5VZaAw9YYLEa13U3saCz6IN8tv5GFybtnt7NNK3p0t7wLXwmOJLlyRSKNoZJL9I0c&usqp=CAU', isLongHair: false, character: 'Diouana', movie:'La Noire de…' },
+  { image: 'https://thefilmstage.com/wp-content/uploads/2021/03/The-Inheritance-1.jpeg', isLongHair: false, character: 'Gwen', movie:'The Inheritance' },
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false, character: 'Fleur', movie:'Rouge'},
+  { image: 'https://www.artforum.com/wp-content/uploads/2013/04/article_large-129.jpg', isLongHair: false, character: 'test', movie:'test'}
 ]
+
 
 let counter = 0;
 
@@ -108,7 +112,60 @@ function handleEndOfSwiping() {
 
 const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 });
 
+// const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
+//   const swipeDistanceThreshold = 50; // Adjust this value based on testing
+//   const swipeVelocityThreshold = 0.5; // Adjust this value as needed
 
+//   const isSwipe = Math.abs(mx) > swipeDistanceThreshold && velocity > swipeVelocityThreshold;
+//   const swipeDirection = mx < 0 ? 'left' : 'right';
+
+//   if (!down && isSwipe) {
+//       gone.add(index);
+//       onSwipe(swipeDirection, cards[index].isLongHair);
+//   } else if (!down) {
+//       gone.delete(index); // Reset the card if it's not a swipe
+//   }
+
+//   api.start(i => {
+//       if (index !== i) return; // Only affect the swiped card
+//       const isGone = gone.has(index);
+//       const x = isGone ? (200 + window.innerWidth) * (swipeDirection === 'left' ? -1 : 1) : down ? mx : 0;
+//       const rot = mx / 100 + (isGone ? (swipeDirection === 'left' ? -1 : 1) * 10 * velocity : 0);
+//       const scale = down ? 1.1 : 1;
+//       return {
+//           x,
+//           rot,
+//           scale,
+//           delay: undefined,
+//           config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
+//       };
+//   });
+
+//   if (!down && gone.size === cards.length) {
+//       handleEndOfSwiping();
+//   }
+// });
+
+
+// const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
+//     const trigger = velocity > 1 // If you flick hard enough it should trigger the card to fly out
+//     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
+      
+//     const direction = dir === -1 ? 'left' : 'right';
+
+//     if (down) {
+//       setDraggedCardIndex(index);
+//     } else {
+//       setDraggedCardIndex(null);
+//     }
+
+//     setDotPosition({ x: mx});
+
+//     if (!down && trigger) {
+//       gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+//       onSwipe(direction, cards[index].isLongHair);
+//       // setTopCardIndex(topCardIndex + 1);
+//   }
 const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
     const trigger = velocity > 1 // If you flick hard enough it should trigger the card to fly out
     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
@@ -128,6 +185,7 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
       onSwipe(direction, cards[index].isLongHair);
       // setTopCardIndex(topCardIndex + 1);
   }
+
     api.start(i => {
       if (index !== i) return // We're only interested in changing spring-data for the current spring
       const isGone = gone.has(index)
@@ -167,6 +225,7 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
 
   return (
     <>
+ 
 {/* <div className={styles.deckContainer}>
     {props.map(({ x, y, rot, scale }, i) => (
       <div key={i} style={{ position: 'relative' }}>
@@ -215,7 +274,7 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
 
 <div style={{
     position: 'absolute',
-    bottom: '40px',
+    bottom: '60px',
     left: `calc(50% + ${dotPosition.x}px)`,
     transform: 'translateX(-50%)'
 }}>
@@ -224,12 +283,12 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
             {cards[draggedCardIndex].character} from {cards[draggedCardIndex].movie}
         </div>
     )}
-    <div style={{
+    {/* <div style={{
         width: '10px',
         height: '10px',
         borderRadius: '50%',
         backgroundColor: 'red',
-    }} />
+    }} /> */}
 </div>
 
 {/* 
