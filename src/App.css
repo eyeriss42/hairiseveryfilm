@@ -1,68 +1,105 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  /* padding: 2rem; */
-  /* text-align: center; */
-}
-
-* {
+html, body, #root {
+  /* height: 100%; */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-.header-title {
-  position: absolute;
+.header {
+  font-family: 'Helvetica';
+  font-weight: bold;
+  color: #000000;
   font-size: 3em;
-  top: 0;
-  left: 0;
-  margin: 10px; 
-  padding-left: 20px; 
+  margin-top: 25px;  
+  margin-left: 25px;
 } 
 
-body {
-  font-family: 'Helvetica', sans-serif;
+.intro {
+  font-family: 'Helvetica';
+  font-weight: bold italic;
+  color: #000000;
+  font-size: 3em;
+  margin-left: 25px;
+}
+
+.button-style {
+  padding: 10px 20px;
+  font-family: 'Helvetica'; 
+  font-size: 1em; 
+  font-weight: bold;
+  color: black;
+  border: 2px solid black; 
+  border-radius: 25px; 
+  cursor: pointer; 
+}
+
+.button-style:hover {
+  background-color: #02afd7;
+  border: 2px solid black;;
+}
+
+.button-style:active {
+  background-color: #02afd7,; 
+}
+
+.proceed {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+}
+
+.button-style {
+  /* Your existing styles for button-style */
+}
+
+/* body {
+  font-family: 'Helvetica';
   color: #000000;
   line-height: 1.6;
   padding: 20px;
+  margin: 0;
+  padding: 0;
   /* background-color: #EBE9D1; */
-}
+/* } */ */
 
-/* .container {
-  width: 80%;
+.content-wrapper {
+  position: relative;
+  padding-top: 60px; 
+  max-height: 70%;
   margin: auto;
   overflow: hidden;
-} */
+}
 
-.header-nav {
+/* .header-nav {
   background: #4d1717;
   padding: 10px 0;
   text-align: right;
-}
+} */
 
-.header-nav a {
+/* .header-nav a {
   color: #333;
   margin: 0 10px;
-}
+} */
 
-.main {
+/* .main {
   padding: 20px 0;
-  /* background: #893d3d; */
-}
+} */
 
-.intro{
+/* .intro{
   position: relative;
   top: -235px; 
-}
+} */
 
 footer {
   color: #000000;
-  text-align: left;
-  padding: 10px;
-  padding-left: 20px; 
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  margin-right: 25px;
+  font-family: 'Helvetica';
+  font-weight: bold;
+  position: fixed;     
+  /* bottom: 0;           */
+  right: 0;          
+  color: #000000;
+  /* margin-right: 25px; */
+  /* padding: 10px;    */
 }
 
 @media only screen and (max-width: 600px) {
@@ -74,3 +111,254 @@ footer {
     width: 95%;
   }
 }
+
+.about{
+  font-family: 'Helvetica';
+  color: #000000;
+  font-size: 16px;
+} 
+
+.css-typing p {
+  border-right: .15em solid rgb(55, 0, 255);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.css-typing p:nth-child(1) {
+  width: 15em;
+  -webkit-animation: type 2s steps(40, end);
+  animation: type 2s steps(40, end);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(2) {
+  width: 15em;
+  opacity: 0;
+  -webkit-animation: type2 2s steps(40, end);
+  animation: type2 2s steps(40, end);
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(3) {
+  width: 23em;
+  opacity: 0;
+  -webkit-animation: type3 2s steps(20, end), blink .5s step-end infinite alternate;
+  animation: type3 2s steps(20, end), blink .5s step-end infinite alternate;
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing .proceed{
+  color: #a79e9e;
+  width: 25em;
+  opacity: 0;
+  -webkit-animation: type3 2s steps(20, end), blink .5s step-end infinite alternate;
+  animation: type3 2s steps(20, end), blink .5s step-end infinite alternate;
+  -webkit-animation-delay: 4s;
+  animation-delay: 7s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
+}
+/* .about p {
+  border-right: .15em solid rgb(30, 42, 108);
+  width: 40em;  */
+  /* -webkit-animation: type 2s steps(40, end);  */
+  /* animation: type 2s steps(40, end); */
+  /* -webkit-animation-fill-mode: forwards; */
+  /* animation-fill-mode: forwards; */
+  /* white-space: nowrap;
+  overflow: hidden;
+}
+
+.about p:nth-child(1) {
+  width: 7.3em;
+  -webkit-animation: type 2s steps(40, end);
+  animation: type 2s steps(40, end);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.about p:nth-child(2) {
+  /* width: 11.5em; */
+  /* opacity: 0;
+  -webkit-animation: type2 2s steps(40, end);
+  animation: type2 2s steps(40, end);
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+} */
+
+/* @keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
+}
+
+.blurred-element {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
+}
+
+.blurred-element:hover {
+  filter: blur(0px);
+}  */

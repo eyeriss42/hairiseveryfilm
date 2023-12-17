@@ -1,17 +1,8 @@
-import  { useState } from 'react'
+import  { useState, useEffect } from 'react'
 import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
 import styles from './swipestyles.module.css'
-import Result from './Result';
-
-// import { useEffect } from 'react';
-
-// import nomadland from "src/assets/nomadland.jpeg";
-// import rouge from "src/assets/rouge.jpeg";
-// import vivresavie from "src/assets/vivresavie.jpeg";
-// import womenwhoran from "src/assets/womenwhoran.jpeg";
-
-// import cards from "/src/assets/cards.js";
+// import Result from './Result';
 
 interface Card {
   image: string;
@@ -21,10 +12,6 @@ interface Card {
 }
 
 const cards: Card[] = [
-  // { image: nomadland, isLongHair: false },
-  // { image: rouge, isLongHair: true },
-  // { image: vivresavie, isLongHair: false },
-  // { image: womenwhoran, isLongHair: true },
   { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true, character: 'Vicky', movie:'Milenium Mambo' },
   { image: 'https://m.media-amazon.com/images/M/MV5BOGY0MzcxZmItNDAzMC00OGUyLTkxYmEtODJlYTE1OWY1NjU2XkEyXkFqcGdeQWpnYW1i._V1_.jpg', isLongHair: false, character: 'Leda', movie:'The Lost Daughter'},
   { image: 'https://assets.vogue.com/photos/615c664300122a1a679f53f1/4:3/w_2396,h_1797,c_limit/MCDROTE_EC021.jpeg', isLongHair: false, character: 'Margot', movie:'The Royal Tenenbaums' },
@@ -48,7 +35,8 @@ const cards: Card[] = [
   { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false, character: 'Fleur', movie:'Rouge'},
   { image: 'https://www.artforum.com/wp-content/uploads/2013/04/article_large-129.jpg', isLongHair: false, character: 'test', movie:'test'}
 ]
-
+  
+export default function Deck(){
 
 let counter = 0;
 
@@ -65,11 +53,10 @@ const from = (_i: number) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
 const trans = (r: number, s: number) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s * 1.2})`
 
-function Deck() {
+
   const [outcome, setOutcome] = useState({ result: '', counter: 0, image: '' });
   const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
-  // const [topCardIndex, setTopCardIndex] = useState(0); 
-  // const [deckPosition, setDeckPosition] = useState({ x: 0, y: 0 }); 
+
   const [draggedCardIndex, setDraggedCardIndex] = useState(null);
 
   const [props, api] = useSprings(cards.length, i => ({
@@ -78,7 +65,7 @@ function Deck() {
   })) // Create a bunch of springs using the helpers above
   // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
   
-
+ 
 function onSwipe(direction: 'left' | 'right', isLongHair: boolean) {
   if ((direction === 'right' && isLongHair) || (direction === 'left' && !isLongHair)) {
     counter += 1;
@@ -93,7 +80,7 @@ function evaluateResult() {
   let imageUrl;
   if (counter > 0) {
     message = "keep growing your hair";
-    imageUrl = 'https://images.mubicdn.net/images/film/293109/cache-873257-1682687759/image-w1280.jpg?size=800x';
+    imageUrl = 'https://64.media.tumblr.com/b536c8964871e83ae57c6948b0c3da0b/d1f3365b1fa9f918-fa/s540x810/199ccd0f1436e830d814e0a49c70c192fb9fc402.gif';
   } else if (counter < 0) {
     message = "it's time to cut your hair";
     imageUrl = 'https://s3.amazonaws.com/festivaldorio/2021/site/peliculas/large2/pierrotle_f03cor_2019113395.jpg';
@@ -110,7 +97,7 @@ function handleEndOfSwiping() {
   setOutcome(evaluationResult); // Update the state
 }
 
-const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 });
+const [dotPosition, setDotPosition] = useState({ x: 0});
 
 // const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
 //   const swipeDistanceThreshold = 50; // Adjust this value based on testing
@@ -201,21 +188,6 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
       }
     })
 
-    // const updateDeckPosition = (newX, newY) => {
-    //   setDeckPosition({ x: newX, y: newY });
-    // };
-
-    // if i wanted to reshuffle
-    // if (!down && gone.size === cards.length)
-    //   setTimeout(() => {
-    //     gone.clear()
-    //     api.start(i => to(i))
-  
-    //       // Now that all cards have been swiped, evaluate the result
-    //       handleEndOfSwiping();
-    //       // console.log(result); // Or update a state variable to display it in the UI
-    //     }, 600);
-
     if (!down && gone.size === cards.length) {
       handleEndOfSwiping(); 
     }
@@ -225,25 +197,7 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
 
   return (
     <>
- 
-{/* <div className={styles.deckContainer}>
-    {props.map(({ x, y, rot, scale }, i) => (
-      <div key={i} style={{ position: 'relative' }}>
-        <animated.div className={styles.deck} style={{ x, y }}>
-          <animated.div
-            {...bind(i)}
-            style={{
-              transform: interpolate([rot, scale], trans),
-              backgroundImage: `url(${cards[i].image})`,
-            }}
-          />
-        </animated.div>
-        <animated.div className={styles.cardText} style={{ transform: `translate3d(${x}px, ${y}+100px, 0)`, position: 'absolute' }}>
-          {cards[i].character}
-        </animated.div>
-      </div>
-    ))}
-  </div> */}
+    <div className={styles.container}> 
       {props.map(({ x, y, rot, scale }, i) => (
         <animated.div className={styles.deck} key={i} style={{ x, y }}>
           <animated.div
@@ -253,24 +207,8 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
               backgroundImage: `url(${cards[i].image})`,
             }}
           />
-                     {/* <div>{cards[i].character}</div>  */}
-
         </animated.div>
       ))}
-{/* 
-<div
-      style={{
-        position: 'absolute',
-        bottom: '-5px', // Adjust this value to position below the deck
-        left: `calc(50% + ${dotPosition.x}px)`, // Center the dot and adjust based on drag
-        width: '10px',
-        height: '10px',
-        borderRadius: '50%',
-        backgroundColor: 'red', // Or any color you prefer
-        transform: 'translateX(-50%)' // Center the dot horizontally
-      }}
-
-      /> */}
 
 <div style={{
     position: 'absolute',
@@ -283,43 +221,8 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
             {cards[draggedCardIndex].character} from {cards[draggedCardIndex].movie}
         </div>
     )}
-    {/* <div style={{
-        width: '10px',
-        height: '10px',
-        borderRadius: '50%',
-        backgroundColor: 'red',
-    }} /> */}
+   
 </div>
-
-{/* 
-{draggedCardIndex !== null && (
-      <div style={{
-        position: 'absolute',
-        left: `50%`, // Center horizontally
-        bottom: '-5px', // Position below the deck
-        transform: `translateX(${dotPosition.x}px)`, // Move horizontally based on drag
-      }}>
-        {cards[draggedCardIndex].character}
-      </div>
-    )} */}
-
-      {/* <animated.div
-        style={{
-          position: "absolute",
-          bottom: "20px", // Adjust this value as needed
-          left: deckPosition.x,
-          transform: `translateY(${deckPosition.y}px)`,
-        }}
-      >
-        <p>Your dynamic text here</p>
-      </animated.div> */}
-
-      {/* {cards[topCardIndex] && (
-        <div className="card-details">
-          <h3>{cards[topCardIndex].character}</h3>
-          <p>from {cards[topCardIndex].movie}</p>
-        </div>
-      )} */}
 
       {outcome.image && (
         <div className="result-image">
@@ -336,15 +239,8 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
           </div>
         </div>
       )}
+          </div>
+
     </>
   );
-}
-
-export default function App() {
-  return (
-    <div className={styles.container}>
-      <Deck />
-    </div>
-    
-  )
 }
