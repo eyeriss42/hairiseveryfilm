@@ -80,7 +80,7 @@ function evaluateResult() {
   let imageUrl;
   if (counter > 0) {
     message = "keep growing your hair and patience will pay off";
-    imageUrl = 'https://assets.vogue.com/photos/6476b21ec2a3004981ecdcdf/1:1/w_3190,h_3190,c_limit/YLpt67-841.jpeg';
+    imageUrl = 'https://ca-times.brightspotcdn.com/dims4/default/1366ca2/2147483647/strip/true/crop/3240x2160+168+0/resize/2400x1600!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F0c%2Fb4%2Ffd6bd85b470f8a003a3599f74822%2Fpoor-things-013-045-poorthings-ov-v30464704-fp-dpo-prohq-uhd-sdr-24-eng-166-eng-5120-a.jpg';
   } else if (counter < 0) {
     message = "it's time to cut your hair, your swipes aren't lying";
     imageUrl = 'https://s3.amazonaws.com/festivaldorio/2021/site/peliculas/large2/pierrotle_f03cor_2019113395.jpg';
@@ -154,7 +154,7 @@ const [dotPosition, setDotPosition] = useState({ x: 0});
 //       // setTopCardIndex(topCardIndex + 1);
 //   }
 const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
-    const trigger = velocity > 1 // If you flick hard enough it should trigger the card to fly out
+    const trigger = velocity > 0.7 // If you flick hard enough it should trigger the card to fly out
     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
       
     const direction = dir === -1 ? 'left' : 'right';
