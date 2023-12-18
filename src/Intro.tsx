@@ -4,15 +4,18 @@ import React, { useEffect } from "react";
 export default function Intro({ onOkayClick }: IntroProps) {
 
     useEffect(() => {
-        const handleGlobalKeyPress = (event: KeyboardEvent) => {
-            onOkayClick();
-        };
+      const handleGlobalKeyPress = (event: KeyboardEvent) => {
+        if (event.key === "Enter") {
+          // Check if the pressed key is 'Enter'
+          onOkayClick();
+        }
+      };
 
-        window.addEventListener('keydown', handleGlobalKeyPress);
+      window.addEventListener("keydown", handleGlobalKeyPress);
 
-        return () => {
-            window.removeEventListener('keydown', handleGlobalKeyPress);
-        };
+      return () => {
+        window.removeEventListener("keydown", handleGlobalKeyPress);
+      };
     }, [onOkayClick]);
 
     return (
@@ -20,9 +23,9 @@ export default function Intro({ onOkayClick }: IntroProps) {
 <div className="css-typing">
 <p> is a quiz that helps you decide </p>
 <p> whether to cut your hair or not</p>
-<p> swipe right if you love the haircut or left if you don't</p>
+<p> swipe right if you ❤️‍🔥 the haircut or left if you don't 🙃</p>
 <div className="proceed">
-<button className="button-style" onClick={onOkayClick}>okay</button><p>or press any key</p>
+<button className="button-style" onClick={onOkayClick}>okay</button><p>or press enter</p>
 </div>
 </div>
 </>
