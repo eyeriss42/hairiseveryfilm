@@ -25,7 +25,7 @@ export default function Intro({ onOkayClick }: IntroProps) {
 <p> whether to cut your hair or not</p>
 <p> swipe right if you ❤️‍🔥 the haircut or left if you don't 🙃</p>
 <div className="proceed">
-<button className="button-style" onClick={onOkayClick}>okay</button><p>or press enter</p>
+<button className="button-style" onClick={onOkayClick}>okay</button><aside>or press enter</aside>
 </div>
 </div>
 </>

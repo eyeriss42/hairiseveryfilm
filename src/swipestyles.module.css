@@ -13,16 +13,9 @@ html, body, #root {
     justify-content: center;
   } 
  
-  /* .container {
-    cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,
-      auto;
-    display: flex;
-    align-items: center;
-    max-height: 50%;
-    justify-content: center;
-  } */
+  
 
-.deck {
+  .deck {
     position: absolute;
     width: 300px;
     height: 200px;
@@ -31,7 +24,9 @@ html, body, #root {
     align-items: center;
     justify-content: center;
     touch-action: none;
-     /* margin: auto; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
 .deck > div {
