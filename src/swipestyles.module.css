@@ -12,7 +12,6 @@ html, body, #root {
     max-height: 50%;
     justify-content: center;
   } 
- 
   
 
   .deck {
@@ -24,8 +23,8 @@ html, body, #root {
     align-items: center;
     justify-content: center;
     touch-action: none;
-    top: 50%;
-    left: 50%;
+    top: 40%;
+    left: 40%;
     transform: translate(-50%, -50%);
   }
 
@@ -72,3 +71,9 @@ html, body, #root {
     transform: translate(-50%, -50%); 
   }
   
+  .result-image {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Or set a specific height */
+}
