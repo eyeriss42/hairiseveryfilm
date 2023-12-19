@@ -80,7 +80,7 @@ function evaluateResult() {
   let imageUrl;
   if (counter > 0) {
     message = "keep growing your hair and patience will pay off";
-    imageUrl = 'https://ca-times.brightspotcdn.com/dims4/default/1366ca2/2147483647/strip/true/crop/3240x2160+168+0/resize/2400x1600!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F0c%2Fb4%2Ffd6bd85b470f8a003a3599f74822%2Fpoor-things-013-045-poorthings-ov-v30464704-fp-dpo-prohq-uhd-sdr-24-eng-166-eng-5120-a.jpg';
+    imageUrl = 'https://wwwflickeringmythc3c8f7.zapwp.com/q:i/r:1/wp:1/w:371/u:https://www.flickeringmyth.com/wp-content/uploads/2023/11/emma-stone-poor-things-600x333.jpg';
   } else if (counter < 0) {
     message = "it's time to cut your hair, your swipes aren't lying";
     imageUrl = 'https://s3.amazonaws.com/festivaldorio/2021/site/peliculas/large2/pierrotle_f03cor_2019113395.jpg';
@@ -160,17 +160,18 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
   const dir = xDir < 0 ? -1 : 1;
   const direction = dir === -1 ? 'left' : 'right';
 
+
+  if (down) {
+    setDraggedCardIndex(index);
+  } else {
+    setDraggedCardIndex(null);
+  }
+
+  setDotPosition({ x: mx});
   if (!down && trigger) {
     gone.add(index);
     onSwipe(direction, cards[index].isLongHair);
 
-        if (down) {
-      setDraggedCardIndex(index);
-    } else {
-      setDraggedCardIndex(null);
-    }
-
-    setDotPosition({ x: mx});
   }
 
 // const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
