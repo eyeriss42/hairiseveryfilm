@@ -34,6 +34,8 @@ html, body, #root {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    width: 400px; /* Fixed width */
+    height: 300px; 
     width: 40vh;
     max-width: 600px; 
     height: 30vh; 

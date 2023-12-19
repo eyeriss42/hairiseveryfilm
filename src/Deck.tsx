@@ -153,25 +153,45 @@ const [dotPosition, setDotPosition] = useState({ x: 0});
 //       onSwipe(direction, cards[index].isLongHair);
 //       // setTopCardIndex(topCardIndex + 1);
 //   }
-const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
-    const trigger = velocity > 0.7 // If you flick hard enough it should trigger the card to fly out
-    const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
-      
-    const direction = dir === -1 ? 'left' : 'right';
 
-    if (down) {
+const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
+  // Use both direction and velocity to determine if a swipe should be triggered
+  const trigger = velocity > 0.7 && ((xDir < 0 && mx < 0) || (xDir > 0 && mx > 0));
+  const dir = xDir < 0 ? -1 : 1;
+  const direction = dir === -1 ? 'left' : 'right';
+
+  if (!down && trigger) {
+    gone.add(index);
+    onSwipe(direction, cards[index].isLongHair);
+
+        if (down) {
       setDraggedCardIndex(index);
     } else {
       setDraggedCardIndex(null);
     }
 
     setDotPosition({ x: mx});
-
-    if (!down && trigger) {
-      gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
-      onSwipe(direction, cards[index].isLongHair);
-      // setTopCardIndex(topCardIndex + 1);
   }
+
+// const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
+//     const trigger = velocity > 0.7 // If you flick hard enough it should trigger the card to fly out
+//     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
+      
+//     const direction = dir === -1 ? 'left' : 'right';
+
+//     if (down) {
+//       setDraggedCardIndex(index);
+//     } else {
+//       setDraggedCardIndex(null);
+//     }
+
+//     setDotPosition({ x: mx});
+
+//     if (!down && trigger) {
+//       gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+//       onSwipe(direction, cards[index].isLongHair);
+//       // setTopCardIndex(topCardIndex + 1);
+//   }
 
     api.start(i => {
       if (index !== i) return // We're only interested in changing spring-data for the current spring
