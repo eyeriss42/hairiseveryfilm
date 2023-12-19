@@ -79,7 +79,7 @@ function evaluateResult() {
   let message;
   let imageUrl;
   if (counter > 0) {
-    message = "keep growing your hair and patience will pay off";
+    message = "keep growing your hair and your patience will pay off";
     imageUrl = 'https://wwwflickeringmythc3c8f7.zapwp.com/q:i/r:1/wp:1/w:371/u:https://www.flickeringmyth.com/wp-content/uploads/2023/11/emma-stone-poor-things-600x333.jpg';
   } else if (counter < 0) {
     message = "it's time to cut your hair, your swipes aren't lying";
