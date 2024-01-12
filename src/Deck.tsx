@@ -3,6 +3,8 @@ import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
 import styles from './swipestyles.module.css'
 // import Result from './Result';
+import rouge from './images/rouge.jpg';
+
 
 interface Card {
   image: string;
@@ -33,7 +35,10 @@ const cards: Card[] = [
   { image: 'https://imengine.prod.srp.navigacloud.com/?uuid=45B7C6F8-2489-4412-9FF8-128AA1189D62&type=primary&q=72&width=1200', isLongHair: true, character: 'Sara', movie:'Losing Ground'},
   { image: 'https://s01.sgp1.cdn.digitaloceanspaces.com/inline/xwosdsysdf-1618688471.png', isLongHair: true, character: 'Mina', movie:'Mississipi Masala'},
   { image: 'https://thefilmstage.com/wp-content/uploads/2021/03/The-Inheritance-1.jpeg', isLongHair: true, character: 'Asili', movie:'Inheritance'},
-  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false, character: 'Fleur', movie:'Rouge'}
+  { image: '  https://filmforum.org/do-not-enter-or-modify-or-erase/client-uploads/_500w/LATE_SPRING_thumbnail.png', isLongHair: true, character: 'Noriko', movie:'Late Spring'},
+  { image: 'https://sffilm.org/wp-content/uploads/2021/11/sffilm-supported-projects-linguafranca1_1200x672.jpg', isLongHair: true, character: 'Olivia', movie:'Lingua Franca'},
+  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false, character: 'Fleur', movie:'Rouge'},
+  { image: rouge, isLongHair: false, character: 'Fleurrrr', movie:'Rougeeeee'}
 ]
   
 export default function Deck(){
