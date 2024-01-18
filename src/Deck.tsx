@@ -2,8 +2,29 @@ import  { useState, useEffect } from 'react'
 import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
 import styles from './swipestyles.module.css'
-// import Result from './Result';
-import rouge from './images/rouge.jpg';
+
+import vicky from './images/vicky.png';
+import leda from './images/leda.png';
+import margot from './images/margot.png';
+import isabelle from './images/isabelle.png';
+import shirin from './images/shirin.png';
+import julie from './images/julie.png';
+import tina from './images/tina.png';
+import detroit from './images/detroit.png';
+import noqreh from './images/noqreh.png';
+import hideko from './images/hideko.png';
+import ada from './images/ada.png';
+import ava from './images/ava.png';
+import natalya from './images/natalya.png';
+import laurence from './images/laurence.png';
+import catwoman from './images/catwoman.png';
+import nana from './images/nana.png';
+import sara from './images/sara.png';
+import patricia from './images/patricia.png';
+import asili from './images/asili.png';
+import noriko from './images/noriko.png';
+import olivia from './images/olivia.png';
+import fleur from './images/fleur.png';
 
 
 interface Card {
@@ -14,31 +35,28 @@ interface Card {
 }
 
 const cards: Card[] = [
-  { image: 'https://www.filmlinc.org/wp-content/uploads/2016/11/millenniummambo2-1600x900-c-default.jpg', isLongHair: true, character: 'Vicky', movie:'Milenium Mambo' },
-  { image: 'https://m.media-amazon.com/images/M/MV5BOGY0MzcxZmItNDAzMC00OGUyLTkxYmEtODJlYTE1OWY1NjU2XkEyXkFqcGdeQWpnYW1i._V1_.jpg', isLongHair: false, character: 'Leda', movie:'The Lost Daughter'},
-  { image: 'https://assets.vogue.com/photos/615c664300122a1a679f53f1/4:3/w_2396,h_1797,c_limit/MCDROTE_EC021.jpeg', isLongHair: false, character: 'Margot', movie:'The Royal Tenenbaums' },
-  { image: 'https://64.media.tumblr.com/ed8b27531fd815312c7b71e28b91d7e3/tumblr_n96s2c0A3J1t144d3o2_1280.jpg', isLongHair: true, character: 'Isabelle', movie:'The Dreamers' },
-  { image: 'https://springbackmagazine.com/wp-content/uploads/2018/07/a-girl-walks-home-alone-at-night.jpg', isLongHair: false, character: 'Shirin', movie:'A Girl Walks Home Alone at Night' },
-  { image: 'https://static01.nyt.com/images/2022/02/02/arts/worst-person-anatomy2/worst-person-anatomy2-superJumbo-v2.jpg', isLongHair: true, character: 'Julie', movie:'The Worst Person in the World' },
-  { image: 'https://i.pinimg.com/originals/e7/6c/40/e76c4005311ab78f14b0668b1ae7a9f6.jpg', isLongHair: false, character: 'Tina', movie:'Do the Right Thing' },
-  { image: 'https://bgn2018media.s3.amazonaws.com/wp-content/uploads/2018/08/27164025/Screen-Shot-2018-08-26-at-4.17.40-PM.png', isLongHair: false, character: 'Detroit', movie:'Sorry to Bother You'  },
-  { image: 'https://m.media-amazon.com/images/M/MV5BZDMxZTYzMzUtZTEwNS00YjAzLTkyNzctNmVkNDNlNTI3ZjBjXkEyXkFqcGdeQXVyMzIwNDY4NDI@._V1_.jpg', isLongHair: false, character: 'Noqreh', movie:'At Five in the Afternoon' },
-  { image: 'https://www.slashfilm.com/img/gallery/shifting-his-focus-to-female-led-films-felt-natural-for-park-chan-wook/l-intro-1652794415.jpg', isLongHair: true, character: 'Lady Hideko', movie:'Handmaiden' },
-  { image: 'https://cineuropa.org/imgCache/2021/08/23/1629718517738_1000x0702_0x0x0x0_1679266092973.jpg', isLongHair: false, character: 'Ada', movie:'Unclenching the Fists' },
-  { image: 'https://www.indiewire.com/wp-content/uploads/2020/06/Screen-Shot-2020-06-25-at-10.30.13-AM.png', isLongHair: false, character: 'Ava', movie:'Ex Machina' },
-  { image: 'https://2.bp.blogspot.com/-uK7QBz3DtzQ/V5gQtuwtHII/AAAAAAAAHOQ/kl4sAhaVJAAmqs115uiGMrFuRTWu2LDlACLcB/s1600/The%2BMirror%2B6.jpg', isLongHair: true, character: 'Natalya', movie:'Mirror' },
-  { image: 'https://media.nouvelobs.com/ext/uri/sreferentiel.nouvelobs.com/file/rue89/604644e046925b2a804cf087703c5023.jpg', isLongHair: true, character: 'Laurence', movie:'Laurence Anyways' },
-  { image: 'https://dafilmfestival.com/wp-content/uploads/2019/11/RET_la-belle-personne-1600x900.jpg', isLongHair: true, character: 'Junie', movie:'The Beautiful Person' },
-  { image: 'https://variety.com/wp-content/uploads/2022/03/Screen-Shot-2022-03-01-at-9.11.46-AM.png', isLongHair: false, character: 'Catwoman', movie:'Batman' },
-  { image: 'https://i.ytimg.com/vi/I1EtvERDcqw/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAkXDGvDhCU7oCxqeEh5ET6TpcugA', isLongHair: false, character: 'Nana', movie:'Vivre Sa Vie' },
-  { image: 'https://media.newyorker.com/photos/5e2b32a45b5737000854e517/master/pass/Brody-JustAnotherGirlontheIRT.jpg', isLongHair: true, character: 'Chantel', movie:'Just Another Girl on the I.R.T.'},
-  { image: 'https://imengine.prod.srp.navigacloud.com/?uuid=45B7C6F8-2489-4412-9FF8-128AA1189D62&type=primary&q=72&width=1200', isLongHair: true, character: 'Sara', movie:'Losing Ground'},
-  { image: 'https://s01.sgp1.cdn.digitaloceanspaces.com/inline/xwosdsysdf-1618688471.png', isLongHair: true, character: 'Mina', movie:'Mississipi Masala'},
-  { image: 'https://thefilmstage.com/wp-content/uploads/2021/03/The-Inheritance-1.jpeg', isLongHair: true, character: 'Asili', movie:'Inheritance'},
-  { image: '  https://filmforum.org/do-not-enter-or-modify-or-erase/client-uploads/_500w/LATE_SPRING_thumbnail.png', isLongHair: true, character: 'Noriko', movie:'Late Spring'},
-  { image: 'https://sffilm.org/wp-content/uploads/2021/11/sffilm-supported-projects-linguafranca1_1200x672.jpg', isLongHair: true, character: 'Olivia', movie:'Lingua Franca'},
-  { image: 'https://s3.amazonaws.com/criterion-production/editorial_content_posts/hero/7826-/6STizdJpBHXBgKFGsXuAspL0PkNDqT_original.jpg', isLongHair: false, character: 'Fleur', movie:'Rouge'},
-  { image: rouge, isLongHair: false, character: 'Fleurrrr', movie:'Rougeeeee'}
+  { image: vicky, isLongHair: true, character: 'Vicky', movie:'Milenium Mambo' },
+  { image: leda, isLongHair: false, character: 'Leda', movie:'The Lost Daughter'},
+  { image: margot, isLongHair: false, character: 'Margot', movie:'The Royal Tenenbaums' },
+  { image: isabelle, isLongHair: true, character: 'Isabelle', movie:'The Dreamers' },
+  { image: shirin, isLongHair: false, character: 'Shirin', movie:'A Girl Walks Home Alone at Night' },
+  { image: julie, isLongHair: true, character: 'Julie', movie:'The Worst Person in the World' },
+  { image: tina, isLongHair: false, character: 'Tina', movie:'Do the Right Thing' },
+  { image: detroit, isLongHair: false, character: 'Detroit', movie:'Sorry to Bother You'  },
+  { image: noqreh, isLongHair: true, character: 'Noqreh', movie:'At Five in the Afternoon' },
+  { image: hideko, isLongHair: true, character: 'Lady Hideko', movie:'Handmaiden' },
+  { image: ada, isLongHair: false, character: 'Ada', movie:'Unclenching the Fists' },
+  { image: ava, isLongHair: false, character: 'Ava', movie:'Ex Machina' },
+  { image: natalya, isLongHair: true, character: 'Natalya', movie:'Mirror' },
+  { image: laurence, isLongHair: true, character: 'Laurence', movie:'Laurence Anyways' },
+  { image: catwoman, isLongHair: false, character: 'Catwoman', movie:'Batman' },
+  { image: nana, isLongHair: false, character: 'Nana', movie:'Vivre Sa Vie' },
+  { image: sara, isLongHair: true, character: 'Sara', movie:'Losing Ground'},
+  { image: patricia, isLongHair: false, character: 'Patricia', movie:'A Bout De Souffle'},
+  { image: asili, isLongHair: true, character: 'Asili', movie:'Inheritance'},
+  { image: noriko, isLongHair: true, character: 'Noriko', movie:'Late Spring'},
+  { image: olivia, isLongHair: true, character: 'Olivia', movie:'Lingua Franca'},
+  { image: fleur, isLongHair: false, character: 'Fleur', movie:'Rouge'}
 ]
   
 export default function Deck(){

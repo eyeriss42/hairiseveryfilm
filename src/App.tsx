@@ -41,7 +41,7 @@ function App() {
       {/* <section className="main">
           <Deck onLoaded={handleOkayClick} />
         </section> */}
-{/* 
+
       <footer>
         <p className="footer">
           {" "}
@@ -54,7 +54,7 @@ function App() {
             fleabag
           </a>
         </p>
-      </footer> */}
+      </footer>
 
  
     </>
