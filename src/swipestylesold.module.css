@@ -1,7 +1,22 @@
-.deck {
+/* html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+.container {
+    cursor: url('src/assets/hand.png') 39 39,
+      auto;
+    display: flex;
+    align-items: center;
+    max-height: 50%;
+    justify-content: center;
+  } 
+  
+  .deck {
     position: absolute;
-    width: 30%;
-    height: 30%;
+    width: 300px;
+    height: 200px;
     will-change: transform;
     display: flex;
     align-items: center;
@@ -17,6 +32,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    /* min-width: 600px;
+    max-width: 700px; 
+    min-height: 400px; 
+    max-height: 500px;  */
     height: 100%;
     width: 100%;
     will-change: transform;
@@ -24,16 +43,11 @@
     box-shadow: 0 6px 20px -5px rgba(50, 50, 73, 0.2), 0 5px 5px -5px rgba(50, 50, 73, 0.1);
   }
 
-
-.container {
-    cursor: url('src/assets/hand.png') 39 39,
-      auto;
-    /* display: flex;
-    align-items: center;
-    max-height: 50%;
-    justify-content: center; */
-  } 
-  
+  .card-details {
+    position: absolute;
+    bottom: -60px;
+    width: 100%;
+  }  
 
   .result-image {
     width: 33.33%;

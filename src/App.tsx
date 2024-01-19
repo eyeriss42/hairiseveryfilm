@@ -27,21 +27,6 @@ function App() {
       )}
       </div>
 
-      {/* <div className="about">
-            <Intro onLoaded={handleOkayClick}/>
-          </div>
-        
-
-          {isDeckLoaded && (
-          <div className="main">
-            <Deck />
-          </div>
-        )} */}
-
-      {/* <section className="main">
-          <Deck onLoaded={handleOkayClick} />
-        </section> */}
-
       <footer>
         <p className="footer">
           {" "}
@@ -55,8 +40,6 @@ function App() {
           </a>
         </p>
       </footer>
-
- 
     </>
   );
 }

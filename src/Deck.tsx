@@ -26,6 +26,10 @@ import noriko from './images/noriko.png';
 import olivia from './images/olivia.png';
 import fleur from './images/fleur.png';
 
+import undecided from './images/undecided.png';
+import longresult from './images/longresult.png';
+import shortresult from './images/shortresult.png';
+
 
 interface Card {
   image: string;
@@ -85,10 +89,8 @@ const trans = (r: number, s: number) =>
   const [props, api] = useSprings(cards.length, i => ({
     ...to(i),
     from: from(i),
-  })) // Create a bunch of springs using the helpers above
-  // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
+  })) 
   
- 
 function onSwipe(direction: 'left' | 'right', isLongHair: boolean) {
   if ((direction === 'right' && isLongHair) || (direction === 'left' && !isLongHair)) {
     counter += 1;
@@ -103,13 +105,13 @@ function evaluateResult() {
   let imageUrl;
   if (counter > 0) {
     message = "keep growing your hair and your patience will pay off";
-    imageUrl = 'https://wwwflickeringmythc3c8f7.zapwp.com/q:i/r:1/wp:1/w:371/u:https://www.flickeringmyth.com/wp-content/uploads/2023/11/emma-stone-poor-things-600x333.jpg';
+    imageUrl = longresult;
   } else if (counter < 0) {
     message = "it's time to cut your hair, your swipes aren't lying";
-    imageUrl = 'https://s3.amazonaws.com/festivaldorio/2021/site/peliculas/large2/pierrotle_f03cor_2019113395.jpg';
+    imageUrl = shortresult;
   } else {
     message = "you're undecided, go for a walk"; 
-    imageUrl = 'https://www.ingmarbergman.se/sites/default/files/persona_1.jpg';
+    imageUrl = undecided;
 
   }
     return { result: message, counter, image: imageUrl };
@@ -117,65 +119,10 @@ function evaluateResult() {
 
 function handleEndOfSwiping() {
   const evaluationResult = evaluateResult();
-  setOutcome(evaluationResult); // Update the state
+  setOutcome(evaluationResult); 
 }
 
 const [dotPosition, setDotPosition] = useState({ x: 0});
-
-// const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
-//   const swipeDistanceThreshold = 50; // Adjust this value based on testing
-//   const swipeVelocityThreshold = 0.5; // Adjust this value as needed
-
-//   const isSwipe = Math.abs(mx) > swipeDistanceThreshold && velocity > swipeVelocityThreshold;
-//   const swipeDirection = mx < 0 ? 'left' : 'right';
-
-//   if (!down && isSwipe) {
-//       gone.add(index);
-//       onSwipe(swipeDirection, cards[index].isLongHair);
-//   } else if (!down) {
-//       gone.delete(index); // Reset the card if it's not a swipe
-//   }
-
-//   api.start(i => {
-//       if (index !== i) return; // Only affect the swiped card
-//       const isGone = gone.has(index);
-//       const x = isGone ? (200 + window.innerWidth) * (swipeDirection === 'left' ? -1 : 1) : down ? mx : 0;
-//       const rot = mx / 100 + (isGone ? (swipeDirection === 'left' ? -1 : 1) * 10 * velocity : 0);
-//       const scale = down ? 1.1 : 1;
-//       return {
-//           x,
-//           rot,
-//           scale,
-//           delay: undefined,
-//           config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
-//       };
-//   });
-
-//   if (!down && gone.size === cards.length) {
-//       handleEndOfSwiping();
-//   }
-// });
-
-
-// const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
-//     const trigger = velocity > 1 // If you flick hard enough it should trigger the card to fly out
-//     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
-      
-//     const direction = dir === -1 ? 'left' : 'right';
-
-//     if (down) {
-//       setDraggedCardIndex(index);
-//     } else {
-//       setDraggedCardIndex(null);
-//     }
-
-//     setDotPosition({ x: mx});
-
-//     if (!down && trigger) {
-//       gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
-//       onSwipe(direction, cards[index].isLongHair);
-//       // setTopCardIndex(topCardIndex + 1);
-//   }
 
 const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
   // Use both direction and velocity to determine if a swipe should be triggered
@@ -196,26 +143,6 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
     onSwipe(direction, cards[index].isLongHair);
 
   }
-
-// const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
-//     const trigger = velocity > 0.7 // If you flick hard enough it should trigger the card to fly out
-//     const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
-      
-//     const direction = dir === -1 ? 'left' : 'right';
-
-//     if (down) {
-//       setDraggedCardIndex(index);
-//     } else {
-//       setDraggedCardIndex(null);
-//     }
-
-//     setDotPosition({ x: mx});
-
-//     if (!down && trigger) {
-//       gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
-//       onSwipe(direction, cards[index].isLongHair);
-//       // setTopCardIndex(topCardIndex + 1);
-//   }
 
     api.start(i => {
       if (index !== i) return // We're only interested in changing spring-data for the current spring
