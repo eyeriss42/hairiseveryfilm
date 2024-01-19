@@ -90,6 +90,7 @@ const trans = (r: number, s: number) =>
     ...to(i),
     from: from(i),
   })) 
+
   
 function onSwipe(direction: 'left' | 'right', isLongHair: boolean) {
   if ((direction === 'right' && isLongHair) || (direction === 'left' && !isLongHair)) {
@@ -183,10 +184,11 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
 
 <div style={{
     position: 'absolute',
-    bottom: '60px',
+    bottom: '100px',
     left: `calc(50% + ${dotPosition.x}px)`,
     transform: 'translateX(-50%)',
-    fontFamily: 'Helvetica, Arial, sans-serif' 
+    fontFamily: 'Helvetica, Arial, sans-serif',
+    textTransform: 'uppercase',
 }}>
     {draggedCardIndex !== null && (
         <div style={{ marginLeft: '15px', display: 'inline-block',  fontSize: '20px', fontWeight: 'bold'  }}>
