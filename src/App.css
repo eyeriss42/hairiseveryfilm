@@ -31,7 +31,7 @@ html, body, #root {
     overflow: hidden;
   }
   
-  .footer {
+  footer {
     min-height: 15%; 
     width: 100%;
     background-color: purple;

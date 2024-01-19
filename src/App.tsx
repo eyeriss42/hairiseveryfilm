@@ -15,31 +15,27 @@ function App() {
       <header className="header">hair is everyfilm</header>
 
       <div className="content-wrapper">
-      {!isDeckLoaded ? (
-        <div className="intro">
-          <Intro onOkayClick={handleOkayClick} />
-        </div>
-      ) : (
-        <div className="deck">
-          <Deck />
-        </div>
-
-      )}
+        {!isDeckLoaded ? (
+          <div className="intro">
+            <Intro onOkayClick={handleOkayClick} />
+          </div>
+        ) : (
+          <div className="deck">
+            <Deck />
+          </div>
+        )}
       </div>
-
       <footer>
-        <p className="footer">
-          {" "}
-          thank you,{" "}
-          <a
-            href="https://www.youtube.com/watch?v=q97iIDx-b7U"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            fleabag
-          </a>
-        </p>
+        thank you,{" "}
+        <a
+          href="https://www.youtube.com/watch?v=q97iIDx-b7U"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          fleabag
+        </a>
       </footer>
+
     </>
   );
 }
