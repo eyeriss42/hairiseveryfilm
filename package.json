@@ -1,7 +1,6 @@
 {
   "name": "hairis",
   "private": false,
-  "homepage": "https://github.com/eyeriss42/hairiseveryfilm",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
