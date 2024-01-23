@@ -1,7 +1,7 @@
-import "./App.css";
-import { useState} from 'react';
-import Deck from "./Deck.tsx";
-import Intro from './Intro';
+import "./app.css";
+import { useState } from "react";
+import Deck from "./deck.tsx";
+import Intro from "./intro.tsx";
 
 function App() {
   const [isDeckLoaded, setIsDeckLoaded] = useState(false);
@@ -35,7 +35,6 @@ function App() {
           fleabag
         </a>
       </footer>
-
     </>
   );
 }

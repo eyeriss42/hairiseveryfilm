@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react'
+import  { useState} from 'react'
 import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
 import styles from './swipestyles.module.css'
@@ -39,7 +39,7 @@ interface Card {
 }
 
 const cards: Card[] = [
-  { image: vicky, isLongHair: true, character: 'Vicky', movie:'Milenium Mambo' },
+  { image: vicky, isLongHair: true, character: 'Vicky', movie:'Millenium Mambo' },
   { image: leda, isLongHair: false, character: 'Leda', movie:'The Lost Daughter'},
   { image: margot, isLongHair: false, character: 'Margot', movie:'The Royal Tenenbaums' },
   { image: isabelle, isLongHair: true, character: 'Isabelle', movie:'The Dreamers' },
@@ -184,7 +184,7 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
 
 <div style={{
     position: 'absolute',
-    bottom: '100px',
+    bottom: '150px',
     left: `calc(50% + ${dotPosition.x}px)`,
     transform: 'translateX(-50%)',
     fontFamily: 'Helvetica, Arial, sans-serif',
@@ -197,14 +197,12 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
     )}
    
 </div>
-
-      {outcome.image && (
+<div className="moment-of-truth">
+{outcome.image && (
         <div className="result-image">
           <img src={outcome.image} alt="Result Image" />
           <div className="result-text">
-            <p
-              style={{ fontSize: "18px", fontWeight: "bold", padding: "10px" }}
-            >
+          <p style={{ fontSize: "20px", fontWeight: "500", padding: "15px", fontFamily: "Helvetica" }}>
               {outcome.result}{" "}
               <span style={{ fontSize: "16px", fontWeight: "normal" }}>
               </span>
@@ -212,6 +210,8 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
           </div>
         </div>
       )}
+</div>
+  
           </div>
 
     </>
