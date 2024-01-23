@@ -1,13 +1,16 @@
 {
   "name": "hairis",
   "private": false,
+  "homepage": "https://github.com/eyeriss42/hairiseveryfilm",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@react-spring/web": "^9.7.3",
