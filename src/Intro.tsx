@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import "./intro.css";
 
+interface IntroProps {
+  onOkayClick: () => void;
+}
+
 export default function Intro({ onOkayClick }: IntroProps) {
 
     useEffect(() => {
