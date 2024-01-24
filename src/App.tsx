@@ -1,6 +1,6 @@
 import "./app.css";
 import { useState } from "react";
-import Deck from "./deck.tsx";
+import Deck from "./Deck.tsx";
 import Intro from "./intro.tsx";
 
 function App() {

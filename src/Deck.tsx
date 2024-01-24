@@ -1,34 +1,66 @@
 import  { useState} from 'react'
 import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
-import styles from './swipestyles.module.css'
 
-import vicky from './images/vicky.png';
-import leda from './images/leda.png';
-import margot from './images/margot.png';
-import isabelle from './images/isabelle.png';
-import shirin from './images/shirin.png';
-import julie from './images/julie.png';
-import tina from './images/tina.png';
-import detroit from './images/detroit.png';
-import noqreh from './images/noqreh.png';
-import hideko from './images/hideko.png';
-import ada from './images/ada.png';
-import ava from './images/ava.png';
-import natalya from './images/natalya.png';
-import laurence from './images/laurence.png';
-import catwoman from './images/catwoman.png';
-import nana from './images/nana.png';
-import sara from './images/sara.png';
-import patricia from './images/patricia.png';
-import asili from './images/asili.png';
-import noriko from './images/noriko.png';
-import olivia from './images/olivia.png';
-import fleur from './images/fleur.png';
+import styles from '/src/swipestyles.module.css'
 
-import undecided from './images/undecided.png';
-import longresult from './images/longresult.png';
-import shortresult from './images/shortresult.png';
+
+import vicky from '../public/images/vicky.png';
+import leda from '../public/images/leda.png';
+import margot from '../public/images/margot.png';
+import isabelle from '../public/images/isabelle.png';
+import shirin from '../public/images/shirin.png';
+import julie from '../public/images/julie.png';
+import tina from '../public/images/tina.png';
+import detroit from '../public/images/detroit.png';
+import noqreh from '../public/images/noqreh.png';
+import hideko from '../public/images/hideko.png';
+import ada from '../public/images/ada.png';
+import ava from '../public/images/ava.png';
+import natalya from '../public/images/natalya.png';
+import laurence from '../public/images/laurence.png';
+import catwoman from '../public/images/catwoman.png';
+import nana from '../public/images/nana.png';
+import sara from '../public/images/sara.png';
+import patricia from '../public/images/patricia.png';
+import asili from '../public/images/asili.png';
+import noriko from '../public/images/noriko.png';
+import olivia from '../public/images/olivia.png';
+import fleur from '../public/images/fleur.png';
+
+import undecided from '../public/images/undecided.png';
+import longresult from '../public/images/longresult.png';
+import shortresult from '../public/images/shortresult.png';
+
+// import styles from './swipestyles.module.css'
+
+
+// import vicky from './images/vicky.png';
+// import leda from './images/leda.png';
+// import margot from './images/margot.png';
+// import isabelle from './images/isabelle.png';
+// import shirin from './images/shirin.png';
+// import julie from './images/julie.png';
+// import tina from './images/tina.png';
+// import detroit from './images/detroit.png';
+// import noqreh from './images/noqreh.png';
+// import hideko from './images/hideko.png';
+// import ada from './images/ada.png';
+// import ava from './images/ava.png';
+// import natalya from './images/natalya.png';
+// import laurence from './images/laurence.png';
+// import catwoman from './images/catwoman.png';
+// import nana from './images/nana.png';
+// import sara from './images/sara.png';
+// import patricia from './images/patricia.png';
+// import asili from './images/asili.png';
+// import noriko from './images/noriko.png';
+// import olivia from './images/olivia.png';
+// import fleur from './images/fleur.png';
+
+// import undecided from './images/undecided.png';
+// import longresult from './images/longresult.png';
+// import shortresult from './images/shortresult.png';
 
 
 interface Card {
@@ -75,6 +107,8 @@ const to = (i: number) => ({
   rot: -10 + Math.random() * 20,
   delay: i * 100,
 })
+
+
 const from = (_i: number) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
 // This is being used down there in the view, it interpolates rotation and scale into a css transform
 const trans = (r: number, s: number) =>
