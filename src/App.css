@@ -29,8 +29,6 @@ html, body, #root {
   color: #000000;
 }
 
-.deck{
-overflow-x:hidden;}
 
 .content-wrapper {
   flex-grow: 1; 
