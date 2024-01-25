@@ -10,6 +10,7 @@
     top: 40%;
     left: 40%;
     transform: translate(-50%, -50%);
+
   }
 
 .deck > div {
@@ -26,13 +27,8 @@
 
 
 .container {
-    cursor: url('src/assets/hand.png') 39 39,
-      auto;
-      
-    /* display: flex;
-    align-items: center;
-    max-height: 50%;
-    justify-content: center; */
+    overscroll-behavior: none;
+    cursor: url('../../assets/icon.png') 39 39, auto;
   } 
   
 

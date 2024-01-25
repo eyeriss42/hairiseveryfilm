@@ -20,6 +20,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "src/components/Deck/Deck.tsx",
+    "src/components/Intro/Intro.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

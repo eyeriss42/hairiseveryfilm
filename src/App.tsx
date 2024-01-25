@@ -1,7 +1,7 @@
 import "./app.css";
 import { useState } from "react";
-import Deck from "./Deck.tsx";
-import Intro from "./intro.tsx";
+import Deck from "./components/Deck/Deck.tsx";
+import Intro from "./components/Intro/Intro.tsx";
 
 function App() {
   const [isDeckLoaded, setIsDeckLoaded] = useState(false);

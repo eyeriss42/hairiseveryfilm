@@ -2,66 +2,36 @@ import  { useState} from 'react'
 import { useSprings, animated, to as interpolate } from '@react-spring/web'
 import { useDrag } from 'react-use-gesture'
 
-import styles from '/src/swipestyles.module.css'
+import styles from './swipestyles.module.css';
 
+import vicky from '../../assets/vicky.png';
+import leda from '../../assets/leda.png';
+import margot from '../../assets/margot.png';
+import isabelle from '../../assets/isabelle.png';
+import shirin from '../../assets/shirin.png';
+import julie from '../../assets/julie.png';
+import tina from '../../assets/tina.png';
+import detroit from '../../assets/detroit.png';
+import noqreh from '../../assets/noqreh.png';
+import hideko from '../../assets/hideko.png';
+import ada from '../../assets/ada.png';
+import ava from '../../assets/ava.png';
+import natalya from '../../assets/natalya.png';
+import laurence from '../../assets/laurence.png';
+import catwoman from '../../assets/catwoman.png';
+import nana from '../../assets/nana.png';
+import sara from '../../assets/sara.png';
+import patricia from '../../assets/patricia.png';
+import asili from '../../assets/asili.png';
+import noriko from '../../assets/noriko.png';
+import olivia from '../../assets/olivia.png';
+import fleur from '../../assets/fleur.png';
 
-import vicky from '../public/images/vicky.png';
-import leda from '../public/images/leda.png';
-import margot from '../public/images/margot.png';
-import isabelle from '../public/images/isabelle.png';
-import shirin from '../public/images/shirin.png';
-import julie from '../public/images/julie.png';
-import tina from '../public/images/tina.png';
-import detroit from '../public/images/detroit.png';
-import noqreh from '../public/images/noqreh.png';
-import hideko from '../public/images/hideko.png';
-import ada from '../public/images/ada.png';
-import ava from '../public/images/ava.png';
-import natalya from '../public/images/natalya.png';
-import laurence from '../public/images/laurence.png';
-import catwoman from '../public/images/catwoman.png';
-import nana from '../public/images/nana.png';
-import sara from '../public/images/sara.png';
-import patricia from '../public/images/patricia.png';
-import asili from '../public/images/asili.png';
-import noriko from '../public/images/noriko.png';
-import olivia from '../public/images/olivia.png';
-import fleur from '../public/images/fleur.png';
+import undecided from '../../assets/undecided.png';
+import longresult from '../../assets/longresult.png';
+import shortresult from '../../assets/shortresult.png';
 
-import undecided from '../public/images/undecided.png';
-import longresult from '../public/images/longresult.png';
-import shortresult from '../public/images/shortresult.png';
-
-// import styles from './swipestyles.module.css'
-
-
-// import vicky from './images/vicky.png';
-// import leda from './images/leda.png';
-// import margot from './images/margot.png';
-// import isabelle from './images/isabelle.png';
-// import shirin from './images/shirin.png';
-// import julie from './images/julie.png';
-// import tina from './images/tina.png';
-// import detroit from './images/detroit.png';
-// import noqreh from './images/noqreh.png';
-// import hideko from './images/hideko.png';
-// import ada from './images/ada.png';
-// import ava from './images/ava.png';
-// import natalya from './images/natalya.png';
-// import laurence from './images/laurence.png';
-// import catwoman from './images/catwoman.png';
-// import nana from './images/nana.png';
-// import sara from './images/sara.png';
-// import patricia from './images/patricia.png';
-// import asili from './images/asili.png';
-// import noriko from './images/noriko.png';
-// import olivia from './images/olivia.png';
-// import fleur from './images/fleur.png';
-
-// import undecided from './images/undecided.png';
-// import longresult from './images/longresult.png';
-// import shortresult from './images/shortresult.png';
-
+import Result from '../Result/Result.tsx'; 
 
 interface Card {
   image: string;
@@ -230,8 +200,12 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
         </div>
     )}
    
+  
 </div>
-<div className="moment-of-truth">
+
+<Result outcome={outcome} /> 
+
+{/* <div className="moment-of-truth">
 {outcome.image && (
         <div className="result-image">
           <img src={outcome.image} alt="Result Image" />
@@ -244,7 +218,7 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
           </div>
         </div>
       )}
-</div>
+</div> */}
   
           </div>
 
