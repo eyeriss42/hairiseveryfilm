@@ -28,6 +28,7 @@
 
 .container {
     overscroll-behavior: none;
+    overflow: hidden;
     cursor: url('../../assets/icon.png') 39 39, auto;
   } 
   

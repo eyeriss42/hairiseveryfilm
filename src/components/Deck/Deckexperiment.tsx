@@ -86,7 +86,7 @@ const trans = (r: number, s: number) =>
 
 
   const [outcome, setOutcome] = useState({ result: '', counter: 0, image: '' });
-  const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
+  const [gone, setGone] = useState(new Set());
 
   const [draggedCardIndex, setDraggedCardIndex] = useState(null);
 
@@ -142,11 +142,20 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
     setDraggedCardIndex(null);
   }
 
+  if (!down && trigger) {
+    setGone(prevGone => {
+      const newGone = new Set(prevGone);
+      newGone.add(index);
+      return newGone;
+    });
+    onSwipe(direction, cards[index].isLongHair);
+  }
+
   setDotPosition({ x: mx});
+  
   if (!down && trigger) {
     gone.add(index);
     onSwipe(direction, cards[index].isLongHair);
-
   }
 
     api.start(i => {
@@ -173,19 +182,26 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
 
   return (
     <>
-    <div className={styles.container}> 
-      {props.map(({ x, y, rot, scale }, i) => (
-        <animated.div className={styles.deck} key={i} style={{ x, y,       visibility: gone.has(i) ? 'hidden' : 'visible'
-      }}>
+   <div className={styles.container}>
+        {props.map(({ x, y, rot, scale }, i) => (
           <animated.div
-            {...bind(i)}
-            style={{
-              transform: interpolate([rot, scale], trans),
-              backgroundImage: `url(${cards[i].image})`,
+            className={styles.deck}
+            key={i}
+            style={{ 
+              x, 
+              y, 
+              display: gone.has(i) ? 'none' : 'block', // Apply display: none conditionally
             }}
-          />
-        </animated.div>
-      ))}
+          >
+            <animated.div
+              {...bind(i)}
+              style={{
+                transform: interpolate([rot, scale], trans),
+                backgroundImage: `url(${cards[i].image})`,
+              }}
+            />
+          </animated.div>
+        ))}
 
 <div style={{
     position: 'absolute',
