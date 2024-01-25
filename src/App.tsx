@@ -1,4 +1,4 @@
-import "./app.css";
+import "./App.css";
 import { useState } from "react";
 import Deck from "./components/Deck/Deck.tsx";
 import Intro from "./components/Intro/Intro.tsx";
