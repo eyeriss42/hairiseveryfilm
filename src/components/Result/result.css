@@ -1,0 +1,20 @@
+@media screen and (max-width: 480px) {
+    .header, .content-wrapper, footer {
+      margin-left: 10px;
+    }
+  
+    .moment-of-truth {
+      max-width: calc(100% - 10px);
+      overflow: hidden;
+    }
+  
+    .moment-of-truth img {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    .moment-of-truth p {
+      max-width: 100%;
+    }
+  }
+  

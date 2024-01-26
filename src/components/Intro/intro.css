@@ -174,14 +174,3 @@
       border-color: transparent;
     }
   }
-
-  .css-typing {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-  }
-  
-  @media screen and (max-width: 600px) {
-    .css-typing {
-      font-size: smaller; 
-    }
-  }
