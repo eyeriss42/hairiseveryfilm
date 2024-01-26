@@ -1,4 +1,4 @@
-import styles from "./result.css";
+import "./result.css";
 
 type Outcome = {
   image: string;
@@ -7,7 +7,7 @@ type Outcome = {
 
 const Result = ({ outcome }: { outcome: Outcome }) => {
   return (
-    <div className="styles.moment-of-truth">
+    <div className="moment-of-truth">
       {outcome.image && (
         <div className="result-image">
           <img src={outcome.image} alt="Result" />
