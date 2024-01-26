@@ -1,4 +1,3 @@
-import "./result.css";
 
 type Outcome = {
   image: string;
