@@ -1,0 +1,15 @@
+
+.moment-of-truth {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    text-align: center; /* Center text */
+    background-color: red; 
+}
+
+.result-image {
+    display: flex;
+    flex-direction: column; /* Aligns children (image and text) in a column */
+    align-items: center; /* Center the items horizontally in the flex container */
+}

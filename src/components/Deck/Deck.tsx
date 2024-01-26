@@ -75,7 +75,7 @@ const to = (i: number) => ({
   y: i * -4,
   scale: 1,
   rot: -10 + Math.random() * 20,
-  delay: i * 100,
+  delay: i * 100
 })
 
 
@@ -175,7 +175,7 @@ const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], 
     <>
     <div className={styles.container}> 
       {props.map(({ x, y, rot, scale }, i) => (
-        <animated.div className={styles.deck} key={i} style={{ x, y,       visibility: gone.has(i) ? 'hidden' : 'visible'
+        <animated.div className={styles.deck} key={i} style={{ x, y, visibility: gone.has(i) ? 'hidden' : 'visible'
       }}>
           <animated.div
             {...bind(i)}
